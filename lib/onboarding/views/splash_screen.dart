@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
 import 'package:hack_with_io/home/views/home_view.dart';
+import 'package:hack_with_io/onboarding/views/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   /// Don't bother about this just continue with your work
   ///
   /// :)
-  Future<void> trasitToOnboardingPage() async {
+  Future<void> transitToOnboardingPage() async {
     final prefs = await SharedPreferences.getInstance();
     final showOnbarding = prefs.getBool('showOnboarding') ?? false;
     Future.delayed(
@@ -23,11 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return showOnbarding
-                ? const HomeView()
-                : const Center(
-                    child: Text('hi'),
-                  );
+            return showOnbarding ? const HomeView() : const OnboardingScreen();
           },
         ),
       ),
@@ -37,37 +34,37 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    // transitToOnboardingPage();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          width: double.infinity,
-          color: AppColors.kBlueColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "HepMap",
-                style: kLogoTextStyle.copyWith(
-                  color: AppColors.kwhiteColor,
-                ),
+        width: double.infinity,
+        color: AppColors.kBlueColor,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "HepMap",
+              style: kLogoTextStyle.copyWith(
+                color: AppColors.kwhiteColor,
+                fontFamily: 'Comfortaa',
               ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                "You don't want to go",
-                style: kTaglineTextStyle.copyWith(
-                  color: AppColors.kwhiteColor,
-                ),
-              ),
-              Text("through this alone.",
-                  style:
-                      kTaglineTextStyle.copyWith(color: AppColors.kwhiteColor)),
-            ],
-          )),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              "You don't want to go\nthrough this alone.",
+              textAlign: TextAlign.center,
+              style: kTaglineTextStyle.copyWith(
+                  color: AppColors.kwhiteColor, fontFamily: 'Montserrat'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

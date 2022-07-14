@@ -5,8 +5,8 @@ import 'models/models.dart';
 
 class FirebaseAuthRepository implements AuthRepository {
   FirebaseAuthRepository({
-    required auth.FirebaseAuth AuthRepository,
-  }) : _firebaseAuth = AuthRepository;
+    required auth.FirebaseAuth authRepository,
+  }) : _firebaseAuth = authRepository;
 
   final auth.FirebaseAuth _firebaseAuth;
 

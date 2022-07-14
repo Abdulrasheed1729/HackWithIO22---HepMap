@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
+import 'package:hack_with_io/auth/views/sign_in.dart';
+import 'package:hack_with_io/auth/views/sign_up.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -26,36 +28,60 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Text(
               "HepMap",
               textAlign: TextAlign.center,
-              style: kSmallLogoTextStyle.copyWith(color: AppColors.kBlueColor),
+              style: kSmallLogoTextStyle.copyWith(
+                color: AppColors.kBlueColor,
+                fontFamily: 'Comfortaa,',
+                fontWeight: FontWeight.w400,
+              ),
             ),
-            Text("Hepatitis\nCommunal\nSupport",
-                textAlign: TextAlign.center,
-                style:
-                    kHeadersTextStyle.copyWith(color: AppColors.kBlackColor)),
+            const SizedBox(height: 15),
+            Text(
+              "Hepatitis\nCommunal\nSupport",
+              textAlign: TextAlign.center,
+              style: kHeadersTextStyle.copyWith(
+                color: AppColors.kBlackColor,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w800,
+              ),
+            ),
             const SizedBox(height: 8),
             Text(
               "Connect and share your\nexperiences with others.",
               textAlign: TextAlign.center,
               style: kHeaderTaglineTextStyle.copyWith(
-                  color: AppColors.kBlackColor),
+                color: AppColors.kBlackColor,
+                fontFamily: 'Montserrat',
+              ),
             ),
             SvgPicture.asset(
               'assets/getstarted-illust.svg',
               height: 280,
               width: 280,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             RawMaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SignUpScreen(),
+                  ),
+                );
+              },
               fillColor: AppColors.kBlueColor,
               shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15),
+                ),
+              ),
+              constraints: const BoxConstraints(minHeight: 49),
               child: Text(
                 "GET STARTED",
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w300,
-                    color: AppColors.kwhiteColor),
+                  fontSize: 18,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.kwhiteColor,
+                ),
               ),
             ),
             Expanded(
@@ -64,15 +90,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 children: [
                   Text(
                     "Already registered?",
-                    style:
-                        kInfoTextStyle.copyWith(color: AppColors.kBlackColor),
+                    style: kInfoTextStyle.copyWith(
+                      color: AppColors.kBlackColor,
+                      fontFamily: 'Montserrat',
+                    ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => SignInScreen(),
+                        ),
+                      );
+                    },
                     child: Text(
                       "Sign in",
-                      style:
-                          kInfoTextStyle.copyWith(color: AppColors.kBlueColor),
+                      style: kInfoTextStyle.copyWith(
+                        color: AppColors.kBlueColor,
+                        fontFamily: 'Montserrat',
+                      ),
                     ),
                   ),
                 ],

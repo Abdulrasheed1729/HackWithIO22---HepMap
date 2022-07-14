@@ -14,6 +14,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
+  final bool _isSelected = false;
 
   static List<Widget> pages = <Widget>[
     const HomePage(),
@@ -34,6 +35,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: pages[_selectedIndex],
       floatingActionButton: FloatingActionButton.small(
+        elevation: 5.0,
         backgroundColor: AppColors.kBlueColor,
         onPressed: () {},
         child: const Icon(
@@ -49,25 +51,13 @@ class _HomeViewState extends State<HomeView> {
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.kBlackColor,
         unselectedItemColor: Colors.grey,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 40,
-              width: 40,
-              child: SvgPicture.asset(
-                'assets/home-navbar.svg',
-              ),
-            ),
+            icon: BottomNavBarIcon(),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 40,
-              width: 40,
-              child: SvgPicture.asset(
-                'assets/reminder-navbar.svg',
-              ),
-            ),
+            icon: BottomNavBarIcon(),
             label: '',
           ),
           // BottomNavigationBarItem(
@@ -81,23 +71,11 @@ class _HomeViewState extends State<HomeView> {
           //   label: '',
           // ),
           BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 40,
-              width: 40,
-              child: SvgPicture.asset(
-                'assets/chat-navbar.svg',
-              ),
-            ),
+            icon: BottomNavBarIcon(),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 40,
-              width: 40,
-              child: SvgPicture.asset(
-                'assets/community-navbar.svg',
-              ),
-            ),
+            icon: BottomNavBarIcon(),
             label: '',
           ),
         ],
@@ -105,6 +83,36 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
+class BottomNavBarIcon extends StatelessWidget {
+  const BottomNavBarIcon({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      'assets/home-navbar.svg',
+      height: 40,
+      width: 40,
+    );
+  }
+}
+
+//  BottomAppBar(
+//         clipBehavior: Clip.none,
+//         shape: const CircularNotchedRectangle(),
+//         notchMargin: 2.0,
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//           children: const [
+//             BottomNavBarIcon(),
+//             BottomNavBarIcon(),
+//             BottomNavBarIcon(),
+//             BottomNavBarIcon(),
+//           ],
+//         ),
+//       ),
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -114,9 +122,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 15.0,
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+        top: 15.0,
+        bottom: 0.0,
       ),
       child: ListView(
         shrinkWrap: true,
@@ -251,6 +261,9 @@ class TipsCard extends StatelessWidget {
                     text,
                     style: kTaglineTextStyle.copyWith(
                       color: AppColors.kBlackColor,
+                      fontFamily: 'Montserrat',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SvgPicture.asset(
@@ -307,12 +320,14 @@ class _DosageCardState extends State<DosageCard> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 50),
+              const SizedBox(height: 45),
               Text(
                 widget.text,
                 textAlign: TextAlign.center,
                 style: kHeaderTaglineTextStyle.copyWith(
                   color: AppColors.kBlackColor,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               const SizedBox(height: 20),
@@ -321,6 +336,8 @@ class _DosageCardState extends State<DosageCard> {
                 textAlign: TextAlign.center,
                 style: kHeaderTaglineTextStyle.copyWith(
                   color: AppColors.kBlackColor,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               Expanded(child: Container()),
@@ -333,7 +350,7 @@ class _DosageCardState extends State<DosageCard> {
                   });
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(1.0),
                   child: SvgPicture.asset(
                     _isChecked
                         ? 'assets/dosage-check button2.svg'
@@ -367,13 +384,17 @@ class HomeTopBar extends StatelessWidget {
               'HepMap', //TODO Add font style
               style: kSmallLogoTextStyle.copyWith(
                 color: AppColors.kBlueColor,
+                fontFamily: 'Comfortaa',
+                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 5),
             Text(
-              'Hello, Bayo', //TODO Add font style
-              style: kInfoTextStyle.copyWith(
+              'Hello, Bayo!',
+              style: kHeaderTaglineTextStyle.copyWith(
                 color: AppColors.kBlackColor,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],
@@ -427,6 +448,8 @@ class ActionsCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: kHeaderTaglineTextStyle.copyWith(
                 color: AppColors.kBlackColor,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
               ),
             )
           ],
