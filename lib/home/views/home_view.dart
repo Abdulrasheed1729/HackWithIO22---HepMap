@@ -34,32 +34,24 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_selectedIndex],
-      floatingActionButton: FloatingActionButton.small(
-        elevation: 5.0,
-        backgroundColor: AppColors.kBlueColor,
-        onPressed: () {},
-        child: const Icon(
-          Icons.add_circle_outline_rounded,
-          size: 40,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton.small(
+      //   elevation: 5.0,
+      //   backgroundColor: AppColors.kBlueColor,
+      //   onPressed: () {},
+      //   child: const Icon(
+      //     Icons.add_circle_outline_rounded,
+      //     size: 40,
+      //   ),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.kBlackColor,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: BottomNavBarIcon(),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: BottomNavBarIcon(),
-            label: '',
-          ),
+        unselectedItemColor: Colors.grey.shade200,
+        items: [
           // BottomNavigationBarItem(
           //   icon: SizedBox(
           //     height: 50,
@@ -70,12 +62,37 @@ class _HomeViewState extends State<HomeView> {
           //   ),
           //   label: '',
           // ),
+
           BottomNavigationBarItem(
-            icon: BottomNavBarIcon(),
+            icon: SvgPicture.asset(
+              'assets/home-navbar.svg',
+              height: 40,
+              width: 40,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: BottomNavBarIcon(),
+            icon: SvgPicture.asset(
+              'assets/reminder-navbar.svg',
+              height: 40,
+              width: 40,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/chat-navbar.svg',
+              height: 40,
+              width: 40,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/community-navbar.svg',
+              height: 40,
+              width: 40,
+            ),
             label: '',
           ),
         ],
@@ -161,8 +178,8 @@ class HomePage extends StatelessWidget {
             height: 200,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              // shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
               children: [
                 DosageCard(
                   text: 'Velpatasvir',
