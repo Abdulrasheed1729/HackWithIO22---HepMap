@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
 import 'package:hack_with_io/chat%20(todo)/chat.dart';
@@ -13,93 +14,174 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int _selectedIndex = 0;
-  final bool _isSelected = false;
+  int _currentPage = 0;
+  // final bool _isSelected = false;
 
   static List<Widget> pages = <Widget>[
     const HomePage(),
     const ReminderView(),
-    // Container(),
+    Container(),
     const ChatView(),
     const CommunityView(),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_selectedIndex],
-      // floatingActionButton: FloatingActionButton.small(
-      //   elevation: 5.0,
-      //   backgroundColor: AppColors.kBlueColor,
-      //   onPressed: () {},
-      //   child: const Icon(
-      //     Icons.add_circle_outline_rounded,
-      //     size: 40,
-      //   ),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: _onItemTapped,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.kBlackColor,
-        unselectedItemColor: Colors.grey.shade200,
-        items: [
-          // BottomNavigationBarItem(
-          //   icon: SizedBox(
-          //     height: 50,
-          //     width: 50,
-          //     child: SvgPicture.asset(
-          //       'assets/add-symptom-small.svg',
-          //     ),
-          //   ),
-          //   label: '',
-          // ),
-
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/home-navbar.svg',
-              height: 40,
-              width: 40,
+      body: pages[_currentPage],
+      bottomNavigationBar: Container(
+        height: 60,
+        decoration: const BoxDecoration(
+          color: Colors.white10,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  _currentPage = 0;
+                });
+              },
+              icon: SvgPicture.asset(
+                'assets/home-navbar.svg',
+                height: 100,
+                width: 40,
+                color: _currentPage == 0
+                    ? AppColors.kBlackColor
+                    : Colors.grey.shade500,
+              ),
             ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/reminder-navbar.svg',
-              height: 40,
-              width: 40,
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  _currentPage = 1;
+                });
+              },
+              icon: SvgPicture.asset(
+                'assets/reminder-navbar.svg',
+                height: 50,
+                width: 50,
+                color: _currentPage == 1
+                    ? AppColors.kBlackColor
+                    : Colors.grey.shade500,
+              ),
             ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/chat-navbar.svg',
-              height: 40,
-              width: 40,
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  _currentPage = 2;
+                });
+              },
+              icon: SvgPicture.asset(
+                'assets/add-symptom-small.svg',
+                height: 100,
+                width: 60,
+              ),
             ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/community-navbar.svg',
-              height: 40,
-              width: 40,
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  _currentPage = 3;
+                });
+              },
+              icon: SvgPicture.asset(
+                'assets/chat-navbar.svg',
+                height: 50,
+                width: 50,
+                color: _currentPage == 3
+                    ? AppColors.kBlackColor
+                    : Colors.grey.shade500,
+              ),
             ),
-            label: '',
-          ),
-        ],
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  _currentPage = 4;
+                });
+              },
+              icon: SvgPicture.asset(
+                'assets/community-navbar.svg',
+                height: 50,
+                width: 50,
+                color: _currentPage == 4
+                    ? AppColors.kBlackColor
+                    : Colors.grey.shade500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
+// BottomNavigationBar(
+//         onTap: _onItemTapped,
+//         showSelectedLabels: false,
+//         showUnselectedLabels: false,
+//         currentIndex: _selectedIndex,
+//         selectedIconTheme: IconThemeData(color: AppColors.kBlackColor),
+//         selectedItemColor: AppColors.kBlackColor,
+//         unselectedItemColor: Colors.grey.shade200,
+//         items: [
+//           // BottomNavigationBarItem(
+//           //   icon: SizedBox(
+//           //     height: 50,
+//           //     width: 50,
+//           //     child: SvgPicture.asset(
+//           //       'assets/add-symptom-small.svg',
+//           //     ),
+//           //   ),
+//           //   label: '',
+//           // ),
+
+//           BottomNavigationBarItem(
+//             icon: SvgPicture.asset(
+//               'assets/home-navbar.svg',
+//               height: 40,
+//               width: 40,
+//             ),
+//             label: '',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: SvgPicture.asset(
+//               'assets/reminder-navbar.svg',
+//               height: 40,
+//               width: 40,
+//             ),
+//             label: '',
+//           ),
+//           BottomNavigationBarItem(
+//             // icon: Icon(Icons.chat),
+//             icon: SvgPicture.asset(
+//               'assets/chat-navbar.svg',
+//               height: 40,
+//               width: 40,
+//             ),
+//             label: '',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: SvgPicture.asset(
+//               'assets/community-navbar.svg',
+//               height: 40,
+//               width: 40,
+//             ),
+//             label: '',
+//           ),
+//         ],
+//       ),
 
 class BottomNavBarIcon extends StatelessWidget {
   const BottomNavBarIcon({
@@ -151,20 +233,19 @@ class HomePage extends StatelessWidget {
         children: [
           const HomeTopBar(),
           const SizedBox(height: 30),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                ActionsCard(
-                  text: 'Add a\nSymptom',
-                  iconUrl: 'assets/add-symptom-small.svg',
-                ),
-                ActionsCard(
-                  text: 'See a\nSpecialist',
-                  iconUrl: 'assets/specialist-icon.svg',
-                ),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [
+              ActionsCard(
+                text: 'Add a\nSymptom',
+                iconUrl: 'assets/add-symptom-small.svg',
+              ),
+              SizedBox(width: 10),
+              ActionsCard(
+                text: 'See a\nSpecialist',
+                iconUrl: 'assets/specialist-icon.svg',
+              ),
+            ],
           ),
           const SizedBox(height: 15),
           Text(
