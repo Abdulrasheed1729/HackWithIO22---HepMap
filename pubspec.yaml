@@ -29,7 +29,6 @@ environment:
 dependencies:
   auth_repository:
     path: packages/auth_repository
-  auto_route: ^4.2.1
   bloc: ^8.0.3
   cloud_firestore: ^3.2.1
   cupertino_icons: ^1.0.2
@@ -47,7 +46,6 @@ dependencies:
   input_validator:
     path: packages/input_validator
   meta: ^1.7.0
-  persistent_bottom_nav_bar: ^4.0.2
   post_repository:
     path: packages/post_repository
   shared_preferences: ^2.0.15

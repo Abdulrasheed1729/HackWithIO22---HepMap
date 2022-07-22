@@ -15,7 +15,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _currentPage = 0;
-  // final bool _isSelected = false;
 
   static List<Widget> pages = <Widget>[
     const HomePage(),
@@ -25,193 +24,97 @@ class _HomeViewState extends State<HomeView> {
     const CommunityView(),
   ];
 
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_currentPage],
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 60,
-        decoration: const BoxDecoration(
-          color: Colors.white10,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 0;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/home-navbar.svg',
-                height: 100,
-                width: 40,
-                color: _currentPage == 0
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade500,
+        child: BottomAppBar(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              //
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentPage = 0;
+                  });
+                },
+                child: SvgPicture.asset(
+                  'assets/home-navbar.svg',
+                  height: 35,
+                  width: 35,
+                  color: _currentPage == 0
+                      ? AppColors.kBlackColor
+                      : Colors.grey.shade500,
+                ),
               ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 1;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/reminder-navbar.svg',
-                height: 50,
-                width: 50,
-                color: _currentPage == 1
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade500,
+
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentPage = 1;
+                  });
+                },
+                child: SvgPicture.asset(
+                  'assets/reminder-navbar.svg',
+                  height: 35,
+                  width: 35,
+                  color: _currentPage == 1
+                      ? AppColors.kBlackColor
+                      : Colors.grey.shade500,
+                ),
               ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 2;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/add-symptom-small.svg',
-                height: 100,
-                width: 60,
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentPage = 2;
+                  });
+                },
+                child: SvgPicture.asset(
+                  'assets/add-symptom-small.svg',
+                  height: 45,
+                  width: 45,
+                ),
               ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 3;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/chat-navbar.svg',
-                height: 50,
-                width: 50,
-                color: _currentPage == 3
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade500,
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentPage = 3;
+                  });
+                },
+                child: SvgPicture.asset(
+                  'assets/chat-navbar.svg',
+                  height: 35,
+                  width: 35,
+                  color: _currentPage == 3
+                      ? AppColors.kBlackColor
+                      : Colors.grey.shade500,
+                ),
               ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 4;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/community-navbar.svg',
-                height: 50,
-                width: 50,
-                color: _currentPage == 4
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade500,
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentPage = 4;
+                  });
+                },
+                child: SvgPicture.asset(
+                  'assets/community-navbar.svg',
+                  height: 35,
+                  width: 35,
+                  color: _currentPage == 4
+                      ? AppColors.kBlackColor
+                      : Colors.grey.shade500,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-// BottomNavigationBar(
-//         onTap: _onItemTapped,
-//         showSelectedLabels: false,
-//         showUnselectedLabels: false,
-//         currentIndex: _selectedIndex,
-//         selectedIconTheme: IconThemeData(color: AppColors.kBlackColor),
-//         selectedItemColor: AppColors.kBlackColor,
-//         unselectedItemColor: Colors.grey.shade200,
-//         items: [
-//           // BottomNavigationBarItem(
-//           //   icon: SizedBox(
-//           //     height: 50,
-//           //     width: 50,
-//           //     child: SvgPicture.asset(
-//           //       'assets/add-symptom-small.svg',
-//           //     ),
-//           //   ),
-//           //   label: '',
-//           // ),
-
-//           BottomNavigationBarItem(
-//             icon: SvgPicture.asset(
-//               'assets/home-navbar.svg',
-//               height: 40,
-//               width: 40,
-//             ),
-//             label: '',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: SvgPicture.asset(
-//               'assets/reminder-navbar.svg',
-//               height: 40,
-//               width: 40,
-//             ),
-//             label: '',
-//           ),
-//           BottomNavigationBarItem(
-//             // icon: Icon(Icons.chat),
-//             icon: SvgPicture.asset(
-//               'assets/chat-navbar.svg',
-//               height: 40,
-//               width: 40,
-//             ),
-//             label: '',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: SvgPicture.asset(
-//               'assets/community-navbar.svg',
-//               height: 40,
-//               width: 40,
-//             ),
-//             label: '',
-//           ),
-//         ],
-//       ),
-
-class BottomNavBarIcon extends StatelessWidget {
-  const BottomNavBarIcon({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      'assets/home-navbar.svg',
-      height: 40,
-      width: 40,
-    );
-  }
-}
-
-//  BottomAppBar(
-//         clipBehavior: Clip.none,
-//         shape: const CircularNotchedRectangle(),
-//         notchMargin: 2.0,
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//           children: const [
-//             BottomNavBarIcon(),
-//             BottomNavBarIcon(),
-//             BottomNavBarIcon(),
-//             BottomNavBarIcon(),
-//           ],
-//         ),
-//       ),
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -479,7 +382,7 @@ class HomeTopBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'HepMap', //TODO Add font style
+              'HepMap',
               style: kSmallLogoTextStyle.copyWith(
                 color: AppColors.kBlueColor,
                 fontFamily: 'Comfortaa',
