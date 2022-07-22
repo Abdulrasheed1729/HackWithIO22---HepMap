@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_with_io/auth/bloc/auth_bloc.dart';
-import 'package:hack_with_io/home/views/home_view.dart';
+import 'package:hack_with_io/auth/views/sign_in.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -14,9 +14,9 @@ class App extends StatelessWidget {
       create: (context) => AuthBloc(
           authRepository:
               FirebaseAuthRepository(authRepository: FirebaseAuth.instance)),
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeView(),
+        home: SignInScreen(),
       ),
     );
   }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
 import 'package:hack_with_io/auth/bloc/auth_bloc.dart';
 import 'package:hack_with_io/auth/views/sign_up.dart';
 import 'package:hack_with_io/home/views/home_view.dart';
+
+import '../widgets/widgets.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -74,25 +75,10 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15.0),
-                      child: TextField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          labelStyle: kTextBoxLabelTextStyle.copyWith(
-                              fontFamily: 'Montserrat'),
-                          suffixIcon: SvgPicture.asset(
-                            'assets/email.svg',
-                            fit: BoxFit.scaleDown,
-                          ),
-                          constraints: const BoxConstraints(maxHeight: 40),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                        ),
-                      ),
+                    AuthTextBox(
+                      controller: _emailController,
+                      label: 'Email',
+                      suffixIconUrl: 'assets/email.svg',
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -104,32 +90,17 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15.0),
-                      child: TextField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        obscuringCharacter: '*',
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          labelStyle: kTextBoxLabelTextStyle.copyWith(
-                            fontFamily: 'Montserrat',
-                          ),
-                          suffixIcon: SvgPicture.asset(
-                            'assets/password.svg',
-                            fit: BoxFit.scaleDown,
-                          ),
-                          constraints: const BoxConstraints(maxHeight: 40),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                        ),
-                      ),
+                    AuthTextBox(
+                      controller: _passwordController,
+                      label: 'Password',
+                      suffixIconUrl: 'assets/password.svg',
+                      isObscureText: true,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    RawMaterialButton(
+                    AuthButton(
+                      label: 'LOGIN',
                       onPressed: () {
                         context.read<AuthBloc>().add(
                               LoginWithEmailAndPassword(
@@ -146,22 +117,6 @@ class SignInScreen extends StatelessWidget {
                           );
                         }
                       },
-                      fillColor: AppColors.kBlueColor,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(15),
-                        ),
-                      ),
-                      constraints: const BoxConstraints(minHeight: 49.0),
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.kwhiteColor,
-                        ),
-                      ),
                     ),
                     const SizedBox(height: 10),
                     TextButton(
@@ -175,7 +130,7 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+                    const SizedBox(
                       height: 40,
                     ),
                     Row(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
 import 'package:hack_with_io/auth/bloc/auth_bloc.dart';
 import 'package:hack_with_io/auth/views/sign_in.dart';
 import 'package:hack_with_io/auth/views/successfully_registered.dart';
+import 'package:hack_with_io/auth/widgets/widgets.dart';
 import 'package:hack_with_io/home/views/home_view.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -69,35 +69,11 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15.0),
-                      child: TextFormField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value!.length < 4) {
-                            return 'Too Short';
-                          } else if (value.isEmpty) {
-                            return 'Email cannot be empty';
-                          } else if (!value.contains('@')) {
-                            return 'Invalid mail';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          labelStyle: kTextBoxLabelTextStyle.copyWith(
-                              fontFamily: 'Montserrat'),
-                          suffixIcon: SvgPicture.asset(
-                            'assets/email.svg',
-                            fit: BoxFit.scaleDown,
-                          ),
-                          constraints: const BoxConstraints(maxHeight: 40),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                        ),
-                      ),
+                    AuthTextBox(
+                      label: 'Email',
+                      suffixIconUrl: 'assets/email.svg',
+                      controller: _emailController,
+                      validator: emailValidator,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -109,27 +85,10 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15.0),
-                      child: TextField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        obscuringCharacter: '*',
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          labelStyle: kTextBoxLabelTextStyle.copyWith(
-                            fontFamily: 'Montserrat',
-                          ),
-                          suffixIcon: SvgPicture.asset(
-                            'assets/password.svg',
-                            fit: BoxFit.scaleDown,
-                          ),
-                          constraints: const BoxConstraints(maxHeight: 40),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                        ),
-                      ),
+                    AuthTextBox(
+                      label: 'Password',
+                      suffixIconUrl: 'assets/password.svg',
+                      controller: _passwordController,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -141,38 +100,17 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 15.0),
-                      child: TextFormField(
-                        controller: _confirmPasswordController,
-                        obscureText: true,
-                        validator: (value) {
-                          if (value != _passwordController.text) {
-                            return 'Password does not match';
-                          }
-                          return null;
-                        },
-                        obscuringCharacter: "*",
-                        decoration: InputDecoration(
-                          labelText: 'Confirm Pasword',
-                          labelStyle: kTextBoxLabelTextStyle.copyWith(
-                            fontFamily: 'Montserrat',
-                          ),
-                          suffixIcon: SvgPicture.asset(
-                            'assets/password.svg',
-                            fit: BoxFit.scaleDown,
-                          ),
-                          constraints: const BoxConstraints(maxHeight: 40),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(13.0),
-                          ),
-                        ),
-                      ),
+                    AuthTextBox(
+                      label: 'Confirm Password',
+                      suffixIconUrl: 'assets/password.svg',
+                      controller: _confirmPasswordController,
+                      validator: passwordValidator,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    RawMaterialButton(
+                    AuthButton(
+                      label: 'REGISTER',
                       onPressed: () {
                         context.read<AuthBloc>().add(
                               CreateAccount(
@@ -190,22 +128,6 @@ class SignUpScreen extends StatelessWidget {
                           );
                         }
                       },
-                      fillColor: AppColors.kBlueColor,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(15),
-                        ),
-                      ),
-                      constraints: const BoxConstraints(minHeight: 49.0),
-                      child: Text(
-                        "REGISTER",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.kwhiteColor,
-                        ),
-                      ),
                     ),
                     const SizedBox(height: 10),
                     RichText(
@@ -224,7 +146,7 @@ class SignUpScreen extends StatelessWidget {
                             const TextSpan(text: '.')
                           ]),
                     ),
-                    Container(
+                    const SizedBox(
                       height: 40,
                     ),
                     Row(
@@ -263,5 +185,23 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String? passwordValidator(value) {
+    if (value != _passwordController.text) {
+      return 'Password does not match';
+    }
+    return null;
+  }
+
+  String? emailValidator(value) {
+    if (value!.length < 4) {
+      return 'Too Short';
+    } else if (value.isEmpty) {
+      return 'Email cannot be empty';
+    } else if (!value.contains('@')) {
+      return 'Invalid mail';
+    }
+    return null;
   }
 }

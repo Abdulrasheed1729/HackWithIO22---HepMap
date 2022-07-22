@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
 import 'package:hack_with_io/auth/views/sign_in.dart';
+import 'package:hack_with_io/auth/widgets/auth_button.dart';
 
 class SuccessfullyRegisteredScreen extends StatefulWidget {
   const SuccessfullyRegisteredScreen({Key? key}) : super(key: key);
@@ -39,7 +40,8 @@ class _SuccessfullyRegisteredScreenState
                     fontFamily: 'Montserrat',
                   ),
                 ),
-                RawMaterialButton(
+                AuthButton(
+                  label: 'LOGIN',
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -47,22 +49,6 @@ class _SuccessfullyRegisteredScreenState
                       ),
                     );
                   },
-                  fillColor: AppColors.kBlueColor,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15),
-                    ),
-                  ),
-                  constraints: const BoxConstraints(minHeight: 49),
-                  child: Text(
-                    "LOGIN",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Montserrat',
-                      color: AppColors.kwhiteColor,
-                    ),
-                  ),
                 ),
               ],
             ),
