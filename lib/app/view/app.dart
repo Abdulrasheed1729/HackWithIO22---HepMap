@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_with_io/auth/bloc/auth_bloc.dart';
-import 'package:hack_with_io/auth/views/sign_in.dart';
 import 'package:hack_with_io/onboarding/views/splash_screen.dart';
 
 class App extends StatelessWidget {
