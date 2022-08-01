@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
-import 'package:hack_with_io/auth/bloc/auth_bloc.dart';
 import 'package:hack_with_io/auth/views/sign_in.dart';
-import 'package:hack_with_io/auth/views/successfully_registered.dart';
 import 'package:hack_with_io/auth/widgets/widgets.dart';
-import 'package:hack_with_io/home/views/home_view.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
@@ -19,166 +15,130 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state is AuthSucess) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const HomeView(),
-            ),
-          );
-        }
-        if (state is AuthFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errorMessage),
-            ),
-          );
-        }
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50.0),
-                      child: Text(
-                        "Sign Up",
-                        textAlign: TextAlign.center,
-                        style: kHeadersTextStyle.copyWith(
-                          color: AppColors.kBlackColor,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.w700,
-                        ),
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0),
+                    child: Text(
+                      "Sign Up",
+                      textAlign: TextAlign.center,
+                      style: kHeadersTextStyle.copyWith(
+                        color: AppColors.kBlackColor,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                    const SizedBox(height: 40),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text(
-                        'Email',
-                        style: kTextBoxLabelTextStyle.copyWith(
+                  ),
+                  const SizedBox(height: 40),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: Text(
+                      'Email',
+                      style: kTextBoxLabelTextStyle.copyWith(
+                        color: AppColors.kBlackColor,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ),
+                  AuthTextBox(
+                    label: 'Email',
+                    suffixIconUrl: 'assets/email.svg',
+                    controller: _emailController,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: Text(
+                      'Password',
+                      style: kTextBoxLabelTextStyle.copyWith(
+                        color: AppColors.kBlackColor,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ),
+                  AuthTextBox(
+                    label: 'Password',
+                    suffixIconUrl: 'assets/password.svg',
+                    controller: _passwordController,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: Text(
+                      'Confirm Password',
+                      style: kTextBoxLabelTextStyle.copyWith(
+                        color: AppColors.kBlackColor,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ),
+                  AuthTextBox(
+                    label: 'Confirm Password',
+                    suffixIconUrl: 'assets/password.svg',
+                    controller: _confirmPasswordController,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  AuthButton(
+                    label: 'REGISTER',
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 10),
+                  RichText(
+                    text: TextSpan(
+                        text: 'By clicking "REGISTER", you agree to HepMap ',
+                        style: kInfoTextStyle.copyWith(
+                          color: AppColors.kBlackColor,
+                          fontFamily: 'Montserrat',
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'Privacy Policy',
+                            style: kTextBoxLabelTextStyle.copyWith(
+                                color: AppColors.kBlueColor),
+                          ),
+                          const TextSpan(text: '.')
+                        ]),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already registered?",
+                        style: kInfoTextStyle.copyWith(
                           color: AppColors.kBlackColor,
                           fontFamily: 'Montserrat',
                         ),
                       ),
-                    ),
-                    AuthTextBox(
-                      label: 'Email',
-                      suffixIconUrl: 'assets/email.svg',
-                      controller: _emailController,
-                      validator: emailValidator,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text(
-                        'Password',
-                        style: kTextBoxLabelTextStyle.copyWith(
-                          color: AppColors.kBlackColor,
-                          fontFamily: 'Montserrat',
-                        ),
-                      ),
-                    ),
-                    AuthTextBox(
-                      label: 'Password',
-                      suffixIconUrl: 'assets/password.svg',
-                      controller: _passwordController,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text(
-                        'Confirm Password',
-                        style: kTextBoxLabelTextStyle.copyWith(
-                          color: AppColors.kBlackColor,
-                          fontFamily: 'Montserrat',
-                        ),
-                      ),
-                    ),
-                    AuthTextBox(
-                      label: 'Confirm Password',
-                      suffixIconUrl: 'assets/password.svg',
-                      controller: _confirmPasswordController,
-                      validator: passwordValidator,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    AuthButton(
-                      label: 'REGISTER',
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                              CreateAccount(
-                                  email: _emailController.text,
-                                  password: _passwordController.text),
-                            );
-                        if (context.read<AuthBloc>().state is AuthFailure) {
-                          return;
-                        } else {
+                      TextButton(
+                        onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const SuccessfullyRegisteredScreen(),
+                              builder: (context) => SignInScreen(),
                             ),
                           );
-                        }
-                      },
-                    ),
-                    const SizedBox(height: 10),
-                    RichText(
-                      text: TextSpan(
-                          text: 'By clicking "REGISTER", you agree to HepMap ',
+                        },
+                        child: Text(
+                          "Sign in",
                           style: kInfoTextStyle.copyWith(
-                            color: AppColors.kBlackColor,
-                            fontFamily: 'Montserrat',
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'Privacy Policy',
-                              style: kTextBoxLabelTextStyle.copyWith(
-                                  color: AppColors.kBlueColor),
-                            ),
-                            const TextSpan(text: '.')
-                          ]),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Already registered?",
-                          style: kInfoTextStyle.copyWith(
-                            color: AppColors.kBlackColor,
+                            color: AppColors.kBlueColor,
                             fontFamily: 'Montserrat',
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => SignInScreen(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "Sign in",
-                            style: kInfoTextStyle.copyWith(
-                              color: AppColors.kBlueColor,
-                              fontFamily: 'Montserrat',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

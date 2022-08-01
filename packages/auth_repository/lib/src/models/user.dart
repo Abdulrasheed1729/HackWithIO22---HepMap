@@ -1,71 +1,24 @@
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
+  final String? email;
+  final String id;
+  final String? name;
+  final String? photo;
+
   const User({
+    this.email,
     required this.id,
-    required this.username,
-    required this.email,
-    required this.imageUrl,
+    this.name,
+    this.photo,
   });
 
-  final String id;
-  final String username;
-  final String email;
-  final String imageUrl;
+  static const empty = User(id: '');
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      id: json['id'] ?? '',
-      username: json['username'] ?? '',
-      email: json['email'] ?? '',
-      imageUrl: json['imageUrl'] ?? '',
-    );
-  }
+  bool get isEmpty => this == User.empty;
 
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'id': id,
-      'username': username,
-      'email': email,
-      'imageUrl': imageUrl,
-    };
-  }
-
-  factory User.empty() {
-    return User(
-      id: '',
-      username: '',
-      email: '',
-      imageUrl: '',
-    );
-  }
-
-  // User copyWith({
-  //   String? userName,
-  //   String? email,
-  //   String? dateOfBirth,
-  //   String? bio,
-  //   String? location,
-  //   String? contact,
-  // }) {
-  //   return User(
-  //     id: this.id,
-  //     username: userName ?? username,
-  //     email: email ?? this.email,
-  //     userId: userId,
-  //     key: key,
-  //     bio: bio ?? this.bio,
-  //     dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-  //     location: location ?? this.location,
-  //     contact: contact ?? this.contact,
-  //   );
-  // }
+  bool get isNotEmpty => this != User.empty;
 
   @override
-  List<Object?> get props => [
-        username,
-        id,
-        email,
-        imageUrl,
-      ];
+  List<Object?> get props => [email, id, name, photo];
 }

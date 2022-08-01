@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_with_io/app/utils/utils.dart';
-import 'package:hack_with_io/auth/bloc/auth_bloc.dart';
+import 'package:hack_with_io/auth/cubits/cubits.dart';
 import 'package:hack_with_io/auth/views/sign_up.dart';
-import 'package:hack_with_io/home/views/home_view.dart';
+import 'package:formz/formz.dart';
 
 import '../widgets/widgets.dart';
 
@@ -15,27 +15,22 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state is AuthSucess) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const HomeView(),
-            ),
-          );
-        }
-
-        if (state is AuthFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errorMessage),
-            ),
-          );
-        }
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: BlocListener<LoginCubit, LoginState>(
+            listener: (context, state) {
+              if (state.status.isSubmissionFailure) {
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBar(
+                      content:
+                          Text(state.errorMessage ?? 'Authentication Failure'),
+                    ),
+                  );
+              }
+            },
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
@@ -75,10 +70,21 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    AuthTextBox(
-                      controller: _emailController,
-                      label: 'Email',
-                      suffixIconUrl: 'assets/email.svg',
+                    BlocBuilder<LoginCubit, LoginState>(
+                      buildWhen: (previous, current) =>
+                          previous.email != current.email,
+                      builder: (context, state) {
+                        return AuthTextBox(
+                          key: const Key('loginForm_emailInput_textField'),
+                          controller: _emailController,
+                          label: 'Email',
+                          onChanged: (email) =>
+                              context.read<LoginCubit>().emailChanged(email),
+                          suffixIconUrl: 'assets/email.svg',
+                          errorText:
+                              state.email.invalid ? 'invalid email' : null,
+                        );
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -90,33 +96,29 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    AuthTextBox(
-                      controller: _passwordController,
-                      label: 'Password',
-                      suffixIconUrl: 'assets/password.svg',
-                      isObscureText: true,
+                    BlocBuilder<LoginCubit, LoginState>(
+                      buildWhen: (previous, current) =>
+                          previous.password != current.password,
+                      builder: (context, state) {
+                        return AuthTextBox(
+                          key: const Key('loginForm_passwordInput_textField'),
+                          controller: _passwordController,
+                          label: 'Password',
+                          suffixIconUrl: 'assets/password.svg',
+                          isObscureText: true,
+                          onChanged: (password) =>
+                              context.read<LoginCubit>().emailChanged(password),
+                          errorText:
+                              state.password.invalid ? 'invalid email' : null,
+                        );
+                      },
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     AuthButton(
                       label: 'LOGIN',
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                              LoginWithEmailAndPassword(
-                                  email: _emailController.text,
-                                  password: _passwordController.text),
-                            );
-                        if (context.read<AuthBloc>().state is AuthFailure) {
-                          return;
-                        } else {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const HomeView(),
-                            ),
-                          );
-                        }
-                      },
+                      onPressed: () {},
                     ),
                     const SizedBox(height: 10),
                     TextButton(

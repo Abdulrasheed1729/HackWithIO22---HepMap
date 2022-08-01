@@ -10,8 +10,9 @@ class AuthTextBox extends StatelessWidget {
     required this.suffixIconUrl,
     this.isObscureText = false,
     this.keyboardType = TextInputType.text,
+    this.onChanged,
     required TextEditingController controller,
-    this.validator,
+    this.errorText,
   })  : _controller = controller,
         super(key: key);
 
@@ -20,19 +21,21 @@ class AuthTextBox extends StatelessWidget {
   final String suffixIconUrl;
   final bool isObscureText;
   final TextInputType keyboardType;
-  final FormFieldValidator<String>? validator;
+  final Function(String)? onChanged;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
-      child: TextFormField(
+      child: TextField(
         controller: _controller,
         obscureText: isObscureText,
         keyboardType: TextInputType.emailAddress,
-        validator: validator,
+        onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
+          errorText: errorText,
           labelStyle: kTextBoxLabelTextStyle.copyWith(fontFamily: 'Montserrat'),
           suffixIcon: SvgPicture.asset(
             suffixIconUrl,
