@@ -4,8 +4,9 @@ import 'package:auth_repository/auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:hack_with_io/app/bloc/enum.dart';
 import 'package:very_good_analysis/very_good_analysis.dart';
+
+import 'enum.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
