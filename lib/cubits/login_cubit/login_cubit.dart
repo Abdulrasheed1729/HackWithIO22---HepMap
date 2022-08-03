@@ -1,8 +1,9 @@
-import 'package:auth_repository/auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:input_validator/input_validator.dart';
+
+import '../../repositories/repositories.dart';
 
 part 'login_state.dart';
 
@@ -35,7 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
     if (!state.status.isValidated) return;
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
-      await _authRepository.logInWithEmailAndPassword(
+      await _authRepository.login(
         email: state.email.value,
         password: state.password.value,
       );
@@ -52,20 +53,20 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  Future<void> logInWithGoogle() async {
-    emit(state.copyWith(status: FormzStatus.submissionInProgress));
-    try {
-      await _authRepository.logInWithGoogle();
-      emit(state.copyWith(status: FormzStatus.submissionSuccess));
-    } on LogInWithGoogleFailure catch (e) {
-      emit(
-        state.copyWith(
-          errorMessage: e.message,
-          status: FormzStatus.submissionFailure,
-        ),
-      );
-    } catch (_) {
-      emit(state.copyWith(status: FormzStatus.submissionFailure));
-    }
-  }
+  // Future<void> logInWithGoogle() async {
+  //   emit(state.copyWith(status: FormzStatus.submissionInProgress));
+  //   try {
+  //     await _authRepository.logInWithGoogle();
+  //     emit(state.copyWith(status: FormzStatus.submissionSuccess));
+  //   } on LogInWithGoogleFailure catch (e) {
+  //     emit(
+  //       state.copyWith(
+  //         errorMessage: e.message,
+  //         status: FormzStatus.submissionFailure,
+  //       ),
+  //     );
+  //   } catch (_) {
+  //     emit(state.copyWith(status: FormzStatus.submissionFailure));
+  //   }
+  // }
 }

@@ -9,7 +9,7 @@ packages:
     source: hosted
     version: "2.8.2"
   auth_repository:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "packages/auth_repository"
       relative: true

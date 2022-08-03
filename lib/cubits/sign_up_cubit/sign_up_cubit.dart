@@ -1,8 +1,9 @@
-import 'package:auth_repository/auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:input_validator/input_validator.dart';
+
+import '../../repositories/repositories.dart';
 
 part 'sign_up_state.dart';
 
