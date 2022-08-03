@@ -1,7 +1,9 @@
 import 'package:auth_repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hack_with_io/app/app.dart';
+
+import 'app.dart';
+import 'app_bloc_observer.dart';
 
 Future<void> main() {
   return BlocOverrides.runZoned(

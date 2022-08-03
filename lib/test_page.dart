@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hack_with_io/app/utils/colors.dart';
+
+import 'configs/configs.dart';
 
 // List<PersistentBottomNavBarItem> _navBarItems() {
 //   return [
