@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hack_with_io/configs/configs.dart';
 
-class AuthButton extends StatelessWidget {
-  const AuthButton({
+class AppWideButton extends StatelessWidget {
+  const AppWideButton({
     Key? key,
     required this.label,
     required this.onPressed,

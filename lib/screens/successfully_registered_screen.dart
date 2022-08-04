@@ -41,7 +41,7 @@ class _SuccessfullyRegisteredScreenState
                     fontFamily: 'Montserrat',
                   ),
                 ),
-                AuthButton(
+                AppWideButton(
                   label: 'LOGIN',
                   onPressed: () {
                     Navigator.of(context).push(

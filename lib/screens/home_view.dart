@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hack_with_io/configs/configs.dart';
 import 'package:hack_with_io/screens/chat_screen.dart';
 import 'package:hack_with_io/screens/community_screen.dart';
+import 'package:hack_with_io/screens/screens.dart';
 
 import 'home_page.dart';
 import 'reminder_screen.dart';
@@ -34,6 +35,7 @@ class _HomeViewState extends State<HomeView> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
+            isDismissible: false,
             barrierColor: Colors.black.withOpacity(.5),
             backgroundColor: Colors.black.withOpacity(.0),
             clipBehavior: Clip.none,
@@ -56,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     child: Column(
                       children: [
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 25),
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
                           child: Padding(
@@ -105,17 +107,24 @@ class _HomeViewState extends State<HomeView> {
                           ),
                         ),
                         //TODO Change the Icons for this
-                        ListTile(
-                          leading: SvgPicture.asset(
-                            'assets/add-symptom-small.svg',
-                            height: 50,
-                            width: 50,
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const AddPostScreen(),
+                            ),
                           ),
-                          title: Text(
-                            'Add Post',
-                            style: kTaglineTextStyle.copyWith(
-                              fontFamily: 'Comfortaa',
-                              fontWeight: FontWeight.w400,
+                          child: ListTile(
+                            leading: SvgPicture.asset(
+                              'assets/add-symptom-small.svg',
+                              height: 50,
+                              width: 50,
+                            ),
+                            title: Text(
+                              'Add Post',
+                              style: kTaglineTextStyle.copyWith(
+                                fontFamily: 'Comfortaa',
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
                         ),

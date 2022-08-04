@@ -87,7 +87,7 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  AuthButton(
+                  AppWideButton(
                     label: 'REGISTER',
                     onPressed: () {},
                   ),

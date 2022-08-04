@@ -7,3 +7,4 @@ export 'sign_up_screen.dart';
 export 'reminder_screen.dart';
 export 'community_screen.dart';
 export 'onboarding_screen.dart';
+export 'add_post_screen.dart';
