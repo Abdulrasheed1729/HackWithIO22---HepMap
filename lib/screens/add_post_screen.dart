@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_with_io/widgets/auth_button.dart';
 
 import '../configs/configs.dart';
+import '../helpers/helpers.dart';
 
 class AddPostScreen extends StatelessWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -88,6 +89,7 @@ class AddPostScreen extends StatelessWidget {
                   'assets/attach-chat.svg',
                   height: 30,
                   width: 30,
+                  color: Colors.grey,
                 ),
               ],
             ),
@@ -96,7 +98,12 @@ class AddPostScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 25.0),
               child: AppWideButton(
                 label: 'CREATE POST',
-                onPressed: () {},
+                onPressed: () {
+                  showDialogWidget(
+                    desc: 'Your post has been shared!',
+                    context: context,
+                  );
+                },
               ),
             ),
           ],
