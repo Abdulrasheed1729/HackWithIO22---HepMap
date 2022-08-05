@@ -3,7 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../configs/configs.dart';
 
-void showDialogWidget({required String desc, required BuildContext context}) {
+void showDialogWidget(
+    {required String desc, required BuildContext context, required iconUrl}) {
   showDialog(
     context: context,
     builder: (context) {
@@ -34,7 +35,7 @@ void showDialogWidget({required String desc, required BuildContext context}) {
           borderRadius: BorderRadius.circular(10.0),
         ),
         content: SvgPicture.asset(
-          'assets/add-symptom-small.svg',
+          iconUrl,
           height: 120,
           width: 120,
         ),

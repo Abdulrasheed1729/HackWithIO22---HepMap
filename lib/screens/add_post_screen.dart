@@ -100,8 +100,9 @@ class AddPostScreen extends StatelessWidget {
                 label: 'CREATE POST',
                 onPressed: () {
                   showDialogWidget(
-                    desc: 'Your post has been shared!',
                     context: context,
+                    desc: 'Your post has been shared!',
+                    iconUrl: 'assets/add-symptom-small.svg',
                   );
                 },
               ),

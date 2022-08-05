@@ -5,16 +5,12 @@ environment:
   sdk:  ">=2.16.0 <3.0.0"
 
 dependencies:
-  auth_repository:
-    path: ../auth_repository
   firebase_auth: ^3.4.1
   cloud_firestore: ^3.2.1
   firebase_core: ^1.19.1
   formz: ^0.4.1
   google_sign_in: ^5.4.0
   meta:
-  cache:
-    path: ../cache
   equatable: ^2.0.3
   uuid: ^3.0.6
   

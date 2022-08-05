@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hack_with_io/configs/configs.dart';
-import 'package:hack_with_io/screens/chat_screen.dart';
-import 'package:hack_with_io/screens/community_screen.dart';
 import 'package:hack_with_io/screens/screens.dart';
-
-import 'home_page.dart';
-import 'reminder_screen.dart';
+import 'package:hack_with_io/screens/set_reminder_screen.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -78,6 +74,11 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         const SizedBox(height: 30),
                         ListTile(
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const AddPostScreen(),
+                            ),
+                          ),
                           leading: SvgPicture.asset(
                             'assets/add-symptom-small.svg',
                             height: 50,
@@ -93,6 +94,11 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         //TODO Change the Icons for this
                         ListTile(
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const SetReminderScreen(),
+                            ),
+                          ),
                           leading: SvgPicture.asset(
                             'assets/add-symptom-small.svg',
                             height: 50,
@@ -107,24 +113,22 @@ class _HomeViewState extends State<HomeView> {
                           ),
                         ),
                         //TODO Change the Icons for this
-                        GestureDetector(
+                        ListTile(
                           onTap: () => Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const AddPostScreen(),
                             ),
                           ),
-                          child: ListTile(
-                            leading: SvgPicture.asset(
-                              'assets/add-symptom-small.svg',
-                              height: 50,
-                              width: 50,
-                            ),
-                            title: Text(
-                              'Add Post',
-                              style: kTaglineTextStyle.copyWith(
-                                fontFamily: 'Comfortaa',
-                                fontWeight: FontWeight.w400,
-                              ),
+                          leading: SvgPicture.asset(
+                            'assets/add-symptom-small.svg',
+                            height: 50,
+                            width: 50,
+                          ),
+                          title: Text(
+                            'Add Post',
+                            style: kTaglineTextStyle.copyWith(
+                              fontFamily: 'Comfortaa',
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
