@@ -5,6 +5,14 @@ import 'package:hack_with_io/widgets/auth_button.dart';
 
 import '../configs/configs.dart';
 
+///==============================================================
+///|            Warning!, Warning!!, Warning!!!                |
+///==============================================================
+///
+/// For any other developer that will be working on this file
+/// please don't for get to refactor this file, it actually needs an
+/// heavy refactoring .........................................
+//TODO Alaye refactor this file later nah :(
 class SetReminderScreen extends StatefulWidget {
   const SetReminderScreen({Key? key}) : super(key: key);
 
