@@ -76,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
                         ListTile(
                           onTap: () => Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const AddPostScreen(),
+                              builder: (context) => const SymptomsScreen(),
                             ),
                           ),
                           leading: SvgPicture.asset(

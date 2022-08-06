@@ -42,14 +42,16 @@ void showDialogWidget(
         actions: [
           Text(
             desc,
+            textAlign: TextAlign.center,
             style: kTaglineTextStyle.copyWith(
               fontFamily: 'Montserrat',
+              fontSize: 12,
               fontWeight: FontWeight.w400,
             ),
           ),
         ],
         actionsAlignment: MainAxisAlignment.center,
-        actionsPadding: const EdgeInsets.only(bottom: 50),
+        actionsPadding: const EdgeInsets.only(bottom: 40),
       );
     },
   );
