@@ -21,3 +21,4 @@ export 'contact_support_screen.dart';
 export 'see_a_specialist_screen.dart';
 export 'create_new_password_screen.dart';
 export 'successfully_registered_screen.dart';
+export 'set_reminder_screen.dart';

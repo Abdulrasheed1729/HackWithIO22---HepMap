@@ -259,7 +259,7 @@ class SelectTimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 40,
       decoration: BoxDecoration(
         border: const Border(
           bottom: BorderSide(width: 1.0, color: Colors.grey),
