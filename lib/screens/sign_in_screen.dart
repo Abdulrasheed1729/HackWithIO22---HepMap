@@ -80,7 +80,7 @@ class SignInScreen extends StatelessWidget {
                           label: 'Email',
                           onChanged: (email) =>
                               context.read<LoginCubit>().emailChanged(email),
-                          suffixIconUrl: 'assets/email.svg',
+                          suffixIconUrl: 'assets/icons/email.svg',
                           errorText:
                               state.email.invalid ? 'invalid email' : null,
                         );
@@ -104,7 +104,7 @@ class SignInScreen extends StatelessWidget {
                           key: const Key('loginForm_passwordInput_textField'),
                           controller: _passwordController,
                           label: 'Password',
-                          suffixIconUrl: 'assets/password.svg',
+                          suffixIconUrl: 'assets/icons/password.svg',
                           isObscureText: true,
                           onChanged: (password) =>
                               context.read<LoginCubit>().emailChanged(password),

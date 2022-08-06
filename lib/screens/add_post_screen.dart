@@ -30,7 +30,7 @@ class AddPostScreen extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   icon: SvgPicture.asset(
-                    'assets/Arrow-left.svg',
+                    'assets/icons/Arrow-left.svg',
                     height: 45,
                     width: 45,
                   ),
@@ -56,7 +56,7 @@ class AddPostScreen extends StatelessWidget {
             Row(
               children: const [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/Bayo.jpg'),
+                  backgroundImage: AssetImage('assets/images/Bayo.jpg'),
                   radius: 20.0,
                 ),
               ],
@@ -79,14 +79,10 @@ class AddPostScreen extends StatelessWidget {
             const SizedBox(height: 15),
             Row(
               children: [
-                const Icon(
-                  Icons.photo_camera_outlined,
-                  size: 25,
-                  color: Colors.grey,
-                ),
+                SvgPicture.asset('assets/icons/add-photo-video.svg'),
                 const SizedBox(width: 10.0),
                 SvgPicture.asset(
-                  'assets/attach-chat.svg',
+                  'assets/icons/attach-chat.svg',
                   height: 30,
                   width: 30,
                   color: Colors.grey,
@@ -102,7 +98,7 @@ class AddPostScreen extends StatelessWidget {
                   showDialogWidget(
                     context: context,
                     desc: 'Your post has been shared!',
-                    iconUrl: 'assets/add-symptom-small.svg',
+                    iconUrl: 'assets/icons/check circle.svg',
                   );
                 },
               ),

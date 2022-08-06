@@ -19,7 +19,7 @@ class DosageCard extends StatefulWidget {
 }
 
 class _DosageCardState extends State<DosageCard> {
-  String iconUrl = 'assets/dosage-check button1.svg';
+  String iconUrl = 'assets/icons/dosage-check button1.svg';
   bool _isChecked = false;
 
   @override
@@ -74,8 +74,8 @@ class _DosageCardState extends State<DosageCard> {
                   padding: const EdgeInsets.all(1.0),
                   child: SvgPicture.asset(
                     _isChecked
-                        ? 'assets/dosage-check button2.svg'
-                        : 'assets/dosage-check button1.svg',
+                        ? 'assets/icons/dosage-check button2.svg'
+                        : 'assets/icons/dosage-check button1.svg',
                     height: 40,
                     width: 80,
                   ),

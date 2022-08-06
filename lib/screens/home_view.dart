@@ -64,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
                                 Expanded(child: Container()),
                                 //TODO Change the icon here.
                                 SvgPicture.asset(
-                                  'assets/add-symptom-small.svg',
+                                  'assets/icons/times circle.svg',
                                   height: 30,
                                   width: 30,
                                 )
@@ -80,7 +80,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           leading: SvgPicture.asset(
-                            'assets/add-symptom-small.svg',
+                            'assets/icons/add-symptom-small.svg',
                             height: 50,
                             width: 50,
                           ),
@@ -100,7 +100,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           leading: SvgPicture.asset(
-                            'assets/add-symptom-small.svg',
+                            'assets/icons/add-symptom-small.svg',
                             height: 50,
                             width: 50,
                           ),
@@ -120,7 +120,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           leading: SvgPicture.asset(
-                            'assets/add-symptom-small.svg',
+                            'assets/icons/add-symptom-small.svg',
                             height: 50,
                             width: 50,
                           ),
@@ -160,7 +160,7 @@ class _HomeViewState extends State<HomeView> {
                   });
                 },
                 child: SvgPicture.asset(
-                  'assets/home-navbar.svg',
+                  'assets/icons/home-navbar.svg',
                   height: 35,
                   width: 35,
                   color: _currentPage == 0
@@ -176,7 +176,7 @@ class _HomeViewState extends State<HomeView> {
                   });
                 },
                 child: SvgPicture.asset(
-                  'assets/reminder-navbar.svg',
+                  'assets/icons/reminder-navbar.svg',
                   height: 35,
                   width: 35,
                   color: _currentPage == 1
@@ -203,7 +203,7 @@ class _HomeViewState extends State<HomeView> {
                   });
                 },
                 child: SvgPicture.asset(
-                  'assets/chat-navbar.svg',
+                  'assets/icons/chat-navbar.svg',
                   height: 35,
                   width: 35,
                   color: _currentPage == 2
@@ -218,7 +218,7 @@ class _HomeViewState extends State<HomeView> {
                   });
                 },
                 child: SvgPicture.asset(
-                  'assets/community-navbar.svg',
+                  'assets/icons/community-navbar.svg',
                   height: 35,
                   width: 35,
                   color: _currentPage == 3

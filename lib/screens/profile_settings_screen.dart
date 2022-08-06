@@ -22,7 +22,7 @@ class ProfileSettingScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () => Navigator.of(context).pop(),
                   child: SvgPicture.asset(
-                    'assets/add-symptom-small.svg',
+                    'assets/icons/times circle.svg',
                     height: 35,
                     width: 35,
                   ),
@@ -36,7 +36,7 @@ class ProfileSettingScreen extends StatelessWidget {
                   width: 50,
                   decoration: const BoxDecoration(shape: BoxShape.circle),
                   child: CircleAvatar(
-                    backgroundImage: const AssetImage('assets/Bayo.jpg'),
+                    backgroundImage: const AssetImage('assets/images/Bayo.jpg'),
                     radius: 25.0,
                     child: Container(
                       height: 50,
@@ -46,10 +46,10 @@ class ProfileSettingScreen extends StatelessWidget {
                         color: Colors.white.withOpacity(.5),
                       ),
                       child: Center(
-                        child: Icon(
-                          Icons.add_a_photo_outlined,
-                          color: AppColors.kwhiteColor,
-                          size: 20,
+                        child: SvgPicture.asset(
+                          'assets/icons/add photo.svg',
+                          height: 20,
+                          width: 20,
                         ),
                       ),
                     ),
@@ -95,10 +95,10 @@ class ProfileSettingScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                const Icon(
-                  Icons.power_settings_new_sharp,
-                  color: Colors.grey,
-                  size: 25,
+                SvgPicture.asset(
+                  'assets/icons/Power Button.svg',
+                  height: 25,
+                  width: 20,
                 ),
                 const SizedBox(width: 10.0),
                 Text(

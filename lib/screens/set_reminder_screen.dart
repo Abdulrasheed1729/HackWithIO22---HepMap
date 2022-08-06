@@ -88,7 +88,7 @@ class _SetReminderScreenState extends State<SetReminderScreen> {
                           Navigator.of(context).pop();
                         },
                         icon: SvgPicture.asset(
-                          'assets/Arrow-left.svg',
+                          'assets/icons/Arrow-left.svg',
                           height: 45,
                           width: 45,
                           color: AppColors.kwhiteColor,
@@ -183,7 +183,7 @@ class _SetReminderScreenState extends State<SetReminderScreen> {
                 showDialogWidget(
                   desc: 'Reminder added!',
                   context: context,
-                  iconUrl: 'assets/add-symptom-small.svg',
+                  iconUrl: 'assets/icons/Check-large.svg',
                 );
               },
             ),

@@ -28,12 +28,12 @@ class HomePage extends StatelessWidget {
             children: const [
               ActionsCard(
                 text: 'Add a\nSymptom',
-                iconUrl: 'assets/add-symptom-small.svg',
+                iconUrl: 'assets/icons/add-symptom-small.svg',
               ),
               SizedBox(width: 10),
               ActionsCard(
                 text: 'See a\nSpecialist',
-                iconUrl: 'assets/specialist-icon.svg',
+                iconUrl: 'assets/icons/specialist-icon.svg',
               ),
             ],
           ),
@@ -86,22 +86,22 @@ class HomePage extends StatelessWidget {
           TipsCard(
             colour: AppColors.kYellowShade,
             text: 'Getting your friends\nand family vaccinated',
-            imageUrl: 'assets/vaccine.svg',
+            imageUrl: 'assets/illusts/vaccine.svg',
           ),
           TipsCard(
             colour: AppColors.kBlueShade,
             text: 'Understanding your\nemotions',
-            imageUrl: 'assets/emotions.svg',
+            imageUrl: 'assets/illusts/emotions.svg',
           ),
           TipsCard(
             colour: AppColors.kYellowShade,
             text: 'Safe exercise tips\nand guidelines',
-            imageUrl: 'assets/exercise.svg',
+            imageUrl: 'assets/illusts/exercise.svg',
           ),
           TipsCard(
             colour: AppColors.kOrangeShade,
             text: 'Home-made healthy\ndrinks',
-            imageUrl: 'assets/health-drinks.svg',
+            imageUrl: 'assets/illusts/health-drinks.svg',
           ),
         ],
       ),

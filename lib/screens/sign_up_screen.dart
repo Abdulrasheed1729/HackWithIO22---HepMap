@@ -51,7 +51,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   AuthTextBox(
                     label: 'Email',
-                    suffixIconUrl: 'assets/email.svg',
+                    suffixIconUrl: 'assets/icons/email.svg',
                     controller: _emailController,
                   ),
                   Padding(
@@ -66,7 +66,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   AuthTextBox(
                     label: 'Password',
-                    suffixIconUrl: 'assets/password.svg',
+                    suffixIconUrl: 'assets/icons/password.svg',
                     controller: _passwordController,
                   ),
                   Padding(
@@ -81,7 +81,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   AuthTextBox(
                     label: 'Confirm Password',
-                    suffixIconUrl: 'assets/password.svg',
+                    suffixIconUrl: 'assets/icons/password.svg',
                     controller: _confirmPasswordController,
                   ),
                   const SizedBox(

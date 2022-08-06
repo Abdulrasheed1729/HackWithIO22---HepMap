@@ -24,7 +24,7 @@ void showDialogWidget(
                 Navigator.of(context).pop();
               },
               child: SvgPicture.asset(
-                'assets/add-symptom-small.svg',
+                'assets/icons/times circle.svg',
                 height: 30,
                 width: 30,
               ),

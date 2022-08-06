@@ -55,7 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             SvgPicture.asset(
-              'assets/getstarted-illust.svg',
+              'assets/illusts/getstarted-illust.svg',
               height: 280,
               width: 280,
             ),

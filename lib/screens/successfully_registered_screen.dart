@@ -31,7 +31,8 @@ class _SuccessfullyRegisteredScreenState
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 150.0),
-                  child: SvgPicture.asset('assets/registered-illust.svg'),
+                  child:
+                      SvgPicture.asset('assets/illusts/registered-illust.svg'),
                 ),
                 Text(
                   "You have successfully registered!",

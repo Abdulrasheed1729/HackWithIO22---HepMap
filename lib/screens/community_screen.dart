@@ -22,7 +22,7 @@ class CommunityScreen extends StatelessWidget {
                 style: kInfoTextStyle.copyWith(fontFamily: 'Monteserrat'),
               ),
               SvgPicture.asset(
-                'assets/Search-icon.svg',
+                'assets/icons/Search-icon.svg',
                 height: 20,
                 width: 20,
               ),
@@ -53,7 +53,8 @@ class CommunityScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               const CircleAvatar(
-                                backgroundImage: AssetImage('assets/Faeda.jpg'),
+                                backgroundImage:
+                                    AssetImage('assets/images/Faeda.jpg'),
                                 radius: 20,
                               ),
                               const SizedBox(width: 10),
@@ -62,7 +63,7 @@ class CommunityScreen extends StatelessWidget {
                                   Text(
                                     'Faeda S.',
                                     style: kInfoTextStyle.copyWith(
-                                      fontFamily: 'MOnteserra',
+                                      fontFamily: 'Monteserrat',
                                     ),
                                   ),
                                   const Text('@fdeya'),
@@ -87,7 +88,7 @@ class CommunityScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               SvgPicture.asset(
-                                'assets/replyandlike-icon.svg',
+                                'assets/icons/replyandlike-icon.svg',
                                 height: 20,
                               ),
                             ],
@@ -96,7 +97,8 @@ class CommunityScreen extends StatelessWidget {
                           Row(
                             children: const [
                               CircleAvatar(
-                                backgroundImage: AssetImage('assets/Umar.jpg'),
+                                backgroundImage:
+                                    AssetImage('assets/images/Umar.jpg'),
                                 radius: 18,
                               ),
                               SizedBox(width: 10),

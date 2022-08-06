@@ -37,7 +37,7 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
                     Navigator.of(context).pop();
                   },
                   icon: SvgPicture.asset(
-                    'assets/Arrow-left.svg',
+                    'assets/icons/Arrow-left.svg',
                     height: 40,
                     width: 40,
                   ),
@@ -197,7 +197,7 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
                     desc:
                         'Your symptoms have been applied!!\n\n We\'ll update your tips to help you\nunderstand how to relieve yourself.',
                     context: context,
-                    iconUrl: 'assets/add-symptom-small.svg',
+                    iconUrl: 'assets/icons/Check-large.svg',
                   );
                 },
               ),

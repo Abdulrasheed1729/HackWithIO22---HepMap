@@ -43,7 +43,7 @@ class HomeTopBar extends StatelessWidget {
             );
           },
           child: const CircleAvatar(
-            backgroundImage: AssetImage('assets/Bayo.jpg'),
+            backgroundImage: AssetImage('assets/images/Bayo.jpg'),
             radius: 25.0,
           ),
         ),

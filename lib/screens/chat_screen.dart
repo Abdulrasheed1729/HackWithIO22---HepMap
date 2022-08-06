@@ -21,14 +21,14 @@ class ChatScreen extends StatelessWidget {
                 IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
-                    'assets/Arrow-left.svg',
+                    'assets/icons/Arrow-left.svg',
                     height: 45,
                     width: 45,
                   ),
                   color: AppColors.kBlackColor,
                 ),
                 const CircleAvatar(
-                  backgroundImage: AssetImage('assets/Bayo.jpg'),
+                  backgroundImage: AssetImage('assets/images/Bayo.jpg'),
                   radius: 20.0,
                 ),
                 const SizedBox(width: 10),
@@ -72,14 +72,14 @@ class ChatScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                          'assets/attach-chat.svg',
+                          'assets/icons/attach-chat.svg',
                           color: Colors.grey,
                           width: 25,
                           height: 25,
                         ),
                         const SizedBox(width: 10),
                         SvgPicture.asset(
-                          'assets/send-chat.svg',
+                          'assets/icons/send-chat.svg',
                           color: AppColors.kBlackColor.withOpacity(.4),
                           height: 25,
                           width: 25,
