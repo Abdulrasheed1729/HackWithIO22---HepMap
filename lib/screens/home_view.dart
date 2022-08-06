@@ -62,7 +62,6 @@ class _HomeViewState extends State<HomeView> {
                             child: Row(
                               children: [
                                 Expanded(child: Container()),
-                                //TODO Change the icon here.
                                 SvgPicture.asset(
                                   'assets/icons/times circle.svg',
                                   height: 30,
@@ -92,7 +91,6 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                         ),
-                        //TODO Change the Icons for this
                         ListTile(
                           onTap: () => Navigator.of(context).push(
                             MaterialPageRoute(
@@ -112,7 +110,6 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                         ),
-                        //TODO Change the Icons for this
                         ListTile(
                           onTap: () => Navigator.of(context).push(
                             MaterialPageRoute(

@@ -16,7 +16,6 @@ void showDialogWidget(
         title: Row(
           children: [
             Expanded(child: Container()),
-            //TODO Change the icon here.
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pop();
