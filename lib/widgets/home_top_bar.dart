@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hack_with_io/configs/configs.dart';
+import 'package:hack_with_io/screens/screens.dart';
 
 class HomeTopBar extends StatelessWidget {
   const HomeTopBar({
@@ -33,9 +34,18 @@ class HomeTopBar extends StatelessWidget {
           ],
         ),
         Expanded(child: Container()),
-        const CircleAvatar(
-          backgroundImage: AssetImage('assets/Bayo.jpg'),
-          radius: 25.0,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ProfileSettingScreen(),
+              ),
+            );
+          },
+          child: const CircleAvatar(
+            backgroundImage: AssetImage('assets/Bayo.jpg'),
+            radius: 25.0,
+          ),
         ),
       ],
     );

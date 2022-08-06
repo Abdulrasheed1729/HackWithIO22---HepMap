@@ -9,3 +9,4 @@ export 'community_screen.dart';
 export 'onboarding_screen.dart';
 export 'add_post_screen.dart';
 export 'symptoms_screen.dart';
+export 'profile_settings_screen.dart';
