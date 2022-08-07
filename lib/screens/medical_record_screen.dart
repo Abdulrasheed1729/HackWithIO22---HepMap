@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hack_with_io/helpers/show_dialog_widget.dart';
 import 'package:hack_with_io/widgets/widgets.dart';
 
 import '../configs/configs.dart';
@@ -50,7 +51,6 @@ class _MedicalRecordScreeenState extends State<MedicalRecordScreeen> {
                     padding: const EdgeInsets.all(0.0),
                     alignment: Alignment.centerLeft,
                     onPressed: () {
-                      Navigator.of(context).pop();
                       Navigator.of(context).pop();
                     },
                     icon: SvgPicture.asset(
@@ -143,7 +143,13 @@ class _MedicalRecordScreeenState extends State<MedicalRecordScreeen> {
               const SizedBox(height: 15),
               AppWideButton(
                 label: 'SAVE',
-                onPressed: () {},
+                onPressed: () {
+                  showDialogWidget(
+                    desc: 'Your records have been saved!',
+                    context: context,
+                    iconUrl: 'assets/icons/Check-large.svg',
+                  );
+                },
               )
             ],
           ),
