@@ -48,19 +48,17 @@ class ChooseDoctorScreen extends StatelessWidget {
             const SizedBox(
               height: 15.0,
             ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: doctors.length,
-                itemBuilder: (context, index) {
-                  return DoctorCard(
-                    name: doctors[index].name,
-                    imageUrl: doctors[index].imageUrl,
-                    cardColour: AppColors.kwhiteColor,
-                    textColour: AppColors.kBlackColor,
-                  );
-                },
-              ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: doctors.length,
+              itemBuilder: (context, index) {
+                return DoctorCard(
+                  name: doctors[index].name,
+                  imageUrl: doctors[index].imageUrl,
+                  cardColour: AppColors.kwhiteColor,
+                  textColour: AppColors.kBlackColor,
+                );
+              },
             ),
           ],
         ),
