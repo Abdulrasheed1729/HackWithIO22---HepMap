@@ -37,28 +37,42 @@ class ChooseDoctorScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  'See a Specialist',
+                  'Choose a Doctor',
                   textAlign: TextAlign.center,
                   style: kHeaderTaglineTextStyle.copyWith(
                     color: AppColors.kBlackColor,
                   ),
+                ),
+                Expanded(child: Container()),
+                IconButton(
+                  padding: const EdgeInsets.all(0.0),
+                  alignment: Alignment.centerLeft,
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    'assets/icons/Search-icon.svg',
+                    height: 25,
+                    width: 25,
+                  ),
+                  color: AppColors.kBlackColor,
                 ),
               ],
             ),
             const SizedBox(
               height: 15.0,
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: doctors.length,
-              itemBuilder: (context, index) {
-                return DoctorCard(
-                  name: doctors[index].name,
-                  imageUrl: doctors[index].imageUrl,
-                  cardColour: AppColors.kwhiteColor,
-                  textColour: AppColors.kBlackColor,
-                );
-              },
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: doctors.length,
+                itemBuilder: (context, index) {
+                  return DoctorCard(
+                    name: doctors[index].name,
+                    imageUrl: doctors[index].imageUrl,
+                    cardColour: AppColors.kwhiteColor,
+                    textColour: AppColors.kBlackColor,
+                  );
+                },
+              ),
             ),
           ],
         ),
