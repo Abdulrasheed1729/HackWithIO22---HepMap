@@ -1,0 +1,12 @@
+export './auth/auth.dart';
+export './chat/chat.dart';
+export './community/community.dart';
+export './health_tips/health_tips.dart';
+export './home/home.dart';
+export './onboarding/onboarding.dart';
+export './prescriptions/prescription.dart';
+export './reminder/reminder.dart';
+export './specialist/specialist.dart';
+export './support/support.dart';
+export './symptoms/symptoms.dart';
+export './user_record/user_record.dart';
