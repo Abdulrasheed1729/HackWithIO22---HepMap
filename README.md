@@ -7,88 +7,48 @@ In this project we followed the use of the BLoC patern, and each of the features
 
 ```
 lib
-|───────── app
-|           |
-│           ├──────── bloc
-|           |
-│           ├──────── configs
-|           |
-│           ├──────── helpers
-|           |
-│           ├──────── view
-|           |
-│           └──────── widgets
-|
-└────────── modules
-            |
-            ├────── auth
-            |       |
-            │       ├─── cubits
-            |       |   |
-            │       │   ├── login
-            |       |   |
-            │       │   └── sign_up
-            |       |
-            │       ├── repository
-            |       |
-            │       └── views
-            |
-            ├────── chat
-            │       ├── views
-            |       |
-            │       └── widgets
-            |
-            ├────── community
-            |       |
-            │       └── views
-            |
-            ├────── health_tips
-            |       |
-            │       ├── views
-            |       |
-            │       └── widgets
-            |
-            ├────── home
-            |       |
-            │       ├── views
-            |       |
-            │       └── widgets
-            |
-            ├────── onboarding
-            |       |
-            │       └── views
-            |
-            ├────── prescriptions
-            |       |
-            │       └── views
-            |
-            ├────── reminder
-            |       |
-            │       └── views
-            |
-            ├────── specialist
-            |       |
-            │       ├── models
-            |       |
-            │       ├── views
-            |       |
-            │       └── widgets
-            |
-            ├────── support
-            |       |
-            │       └── views
-            |
-            ├────── symptoms
-            |       |
-            │       └── views
-            |
-            └────── user_record
-                    |
-                    ├── models
-                    |
-                    ├── views
-                    |
-                    └── widgets
+├── app
+│   ├── bloc
+│   ├── configs
+│   ├── helpers
+│   ├── view
+│   └── widgets
+└── modules
+    ├── auth
+    │   ├── cubits
+    │   │   ├── login
+    │   │   └── sign_up
+    │   ├── repository
+    │   └── views
+    ├── chat
+    │   ├── views
+    │   └── widgets
+    ├── community
+    │   └── views
+    ├── health_tips
+    │   ├── views
+    │   └── widgets
+    ├── home
+    │   ├── views
+    │   └── widgets
+    ├── onboarding
+    │   └── views
+    ├── prescriptions
+    │   └── views
+    ├── reminder
+    │   └── views
+    ├── specialist
+    │   ├── models
+    │   ├── views
+    │   └── widgets
+    ├── support
+    │   └── views
+    ├── symptoms
+    │   └── views
+    └── user_record
+        ├── models
+        ├── views
+        └── widgets
 ```
 
 A new Flutter project.
