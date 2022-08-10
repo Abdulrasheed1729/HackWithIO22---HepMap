@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_with_io/app/app.dart';
+import 'package:hack_with_io/modules/specialist/specialist.dart';
 
 import '../widgets/widgets.dart';
 import 'choose_doctors_screen.dart';
@@ -127,6 +128,13 @@ class _SeeSpacialistScreenState extends State<SeeSpacialistScreen> {
               imageUrl: 'assets/images/Dr-Femi-Marc.jpg',
               cardColour: AppColors.kBlueColor,
               textColour: AppColors.kwhiteColor,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const DoctorProfileScreen(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 20.0),
             Text(

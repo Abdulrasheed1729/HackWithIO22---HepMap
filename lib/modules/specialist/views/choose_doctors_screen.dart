@@ -70,6 +70,7 @@ class ChooseDoctorScreen extends StatelessWidget {
                     imageUrl: doctors[index].imageUrl,
                     cardColour: AppColors.kwhiteColor,
                     textColour: AppColors.kBlackColor,
+                    onTap: () {},
                   );
                 },
               ),
