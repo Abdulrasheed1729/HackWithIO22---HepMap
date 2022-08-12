@@ -87,9 +87,94 @@ class CommunityScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              SvgPicture.asset(
-                                'assets/icons/replyandlike-icon.svg',
-                                height: 20,
+                              GestureDetector(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        scrollable: true,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                          horizontal: 15,
+                                          vertical: 10,
+                                        ),
+                                        title: Row(
+                                          children: [
+                                            Expanded(child: Container()),
+                                            GestureDetector(
+                                              onTap: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: SvgPicture.asset(
+                                                'assets/icons/times circle.svg',
+                                                height: 20,
+                                                width: 20,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                        ),
+                                        content: Column(
+                                          children: [
+                                            TextField(
+                                              maxLines: 5,
+                                              toolbarOptions:
+                                                  const ToolbarOptions(
+                                                copy: true,
+                                                cut: true,
+                                                selectAll: true,
+                                              ),
+                                              decoration: InputDecoration(
+                                                hintText:
+                                                    'Type your relpy here...',
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                ),
+                                              ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                    'assets/icons/add-photo-video.svg'),
+                                                const SizedBox(width: 10.0),
+                                                SvgPicture.asset(
+                                                  'assets/icons/attach-chat.svg',
+                                                  height: 30,
+                                                  width: 30,
+                                                  color: Colors.grey,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        actions: [
+                                          GestureDetector(
+                                            onTap: () {},
+                                            child: SvgPicture.asset(
+                                              'assets/icons/send-reply-icon.svg',
+                                              height: 30.0,
+                                              width: 30.0,
+                                            ),
+                                          )
+                                        ],
+                                        actionsAlignment:
+                                            MainAxisAlignment.center,
+                                        actionsPadding:
+                                            const EdgeInsets.only(bottom: 15),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/icons/replyandlike-icon.svg',
+                                  height: 20,
+                                ),
                               ),
                             ],
                           ),
