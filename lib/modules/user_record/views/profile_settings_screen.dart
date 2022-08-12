@@ -103,7 +103,7 @@ class ProfileSettingScreen extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return const ChangePasswordScreen();
+                      return ResetPasswordScreen();
                     },
                   ),
                 );
