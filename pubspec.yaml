@@ -47,6 +47,7 @@ dependencies:
   input_validator:
     path: packages/input_validator
   meta: ^1.7.0
+  path_provider: ^2.0.11
   post_repository:
     path: packages/post_repository
   shared_preferences: ^2.0.15

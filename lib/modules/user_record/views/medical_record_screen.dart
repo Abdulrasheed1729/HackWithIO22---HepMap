@@ -102,7 +102,12 @@ class _MedicalRecordScreeenState extends State<MedicalRecordScreeen> {
                 ),
               ),
               const SizedBox(height: 5),
-              const NormalTextBox(label: ''),
+
+              // Weight
+              const NormalTextBox(
+                label: '',
+                keyboardType: TextInputType.number,
+              ),
               const SizedBox(height: 15),
               Text(
                 'Height',

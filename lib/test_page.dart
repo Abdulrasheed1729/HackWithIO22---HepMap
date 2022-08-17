@@ -1,46 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hack_with_io/app/app.dart';
-
-// List<PersistentBottomNavBarItem> _navBarItems() {
-//   return [
-//     PersistentBottomNavBarItem(
-//       icon: SvgPicture.asset(
-//         'assets/reminder-navbar.svg',
-//         height: 50,
-//         width: 50,
-//       ),
-//     ),
-//     PersistentBottomNavBarItem(
-//       icon: SvgPicture.asset(
-//         'assets/reminder-navbar.svg',
-//         height: 50,
-//         width: 50,
-//       ),
-//     ),
-//     PersistentBottomNavBarItem(
-//       icon: SvgPicture.asset(
-//         'assets/reminder-navbar.svg',
-//         height: 50,
-//         width: 50,
-//       ),
-//     ),
-//     PersistentBottomNavBarItem(
-//       icon: SvgPicture.asset(
-//         'assets/reminder-navbar.svg',
-//         height: 50,
-//         width: 50,
-//       ),
-//     ),
-//     PersistentBottomNavBarItem(
-//       icon: SvgPicture.asset(
-//         'assets/reminder-navbar.svg',
-//         height: 50,
-//         width: 50,
-//       ),
-//     ),
-//   ];
-// }
+import 'package:hack_with_io/main.dart';
+import 'package:hack_with_io/modules/user_record/services/storage/local_storage.dart';
+import 'package:hack_with_io/modules/user_record/user_record.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);
@@ -50,122 +12,76 @@ class TestPage extends StatefulWidget {
 }
 
 class _TestPageState extends State<TestPage> {
-  // late PersistentTabController _controller;
+  late TextEditingController _nameController;
+  late TextEditingController _userNameController;
+  late TextEditingController _idController;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // _controller = PersistentTabController(initialIndex: 0);
-  // }
+  User? user;
 
-  int _currentPage = 0;
-  final _pages = [
-    const Text('Page 1'),
-    const Text('Page 2'),
-    const Text('Page 3'),
-    const Text('Page 4'),
-    const Text('Page 5'),
-  ];
+  late Box<User> userBox = Hive.box('user_record');
+
+  @override
+  void initState() {
+    _nameController = TextEditingController();
+    _userNameController = TextEditingController();
+    _idController = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Test Page'),
-      ),
-      bottomNavigationBar: Container(
-        height: 60,
-        decoration: const BoxDecoration(
-          color: Colors.white10,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 25.0,
+          vertical: 15.0,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Column(
           children: [
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 0;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/chat-navbar.svg',
-                height: 80,
-                width: 80,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                color: _currentPage == 0
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade300,
+            TextField(
+              controller: _idController,
+              decoration: InputDecoration(
+                labelText: 'id',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
             ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 1;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/chat-navbar.svg',
-                height: 50,
-                width: 50,
-                color: _currentPage == 1
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade600,
+            const SizedBox(height: 10.0),
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(
+                labelText: 'Name',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
             ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 2;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/add-symptom-small.svg',
-                height: 55,
-                width: 55,
-                // color: _currentPage == 2
-                //     ? AppColors.kBlackColor
-                //     : Colors.grey.shade300,
+            const SizedBox(height: 10.0),
+            TextField(
+              controller: _userNameController,
+              decoration: InputDecoration(
+                labelText: 'Username',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
             ),
-            IconButton(
-              enableFeedback: false,
+            const SizedBox(height: 15.0),
+            ElevatedButton(
               onPressed: () {
-                setState(() {
-                  _currentPage = 3;
-                });
+                User user = User(
+                  id: _idController.text,
+                  name: _nameController.text,
+                  username: _userNameController.text,
+                );
+                getIt.get<UserLocalStorageApi>().updateUser(userBox, user);
               },
-              icon: SvgPicture.asset(
-                'assets/chat-navbar.svg',
-                height: 50,
-                width: 50,
-                color: _currentPage == 3
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade300,
-              ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  _currentPage = 4;
-                });
-              },
-              icon: SvgPicture.asset(
-                'assets/chat-navbar.svg',
-                height: 50,
-                width: 50,
-                color: _currentPage == 4
-                    ? AppColors.kBlackColor
-                    : Colors.grey.shade300,
-              ),
+              child: const Text('Save'),
             ),
           ],
         ),
       ),
-      body: Center(child: _pages[_currentPage]),
     );
   }
 }

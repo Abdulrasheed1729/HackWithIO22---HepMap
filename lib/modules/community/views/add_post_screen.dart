@@ -8,6 +8,35 @@ class AddPostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.kwhiteColor,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 25.0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            child: SvgPicture.asset(
+              'assets/icons/Arrow-left.svg',
+              height: 40,
+              width: 40,
+              color: AppColors.kBlackColor,
+            ),
+          ),
+        ),
+        iconTheme: const IconThemeData(size: 25.0),
+        title: const Text(
+          'Add Post',
+        ),
+        titleTextStyle: kHeaderTaglineTextStyle.copyWith(
+          color: AppColors.kBlackColor,
+          fontSize: 16.0,
+          fontFamily: 'Comfortaa',
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 25.0,
@@ -16,40 +45,6 @@ class AddPostScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  alignment: Alignment.centerLeft,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                  },
-                  icon: SvgPicture.asset(
-                    'assets/icons/Arrow-left.svg',
-                    height: 45,
-                    width: 45,
-                  ),
-                  color: AppColors.kBlackColor,
-                ),
-                // const CircleAvatar(
-                //   backgroundImage: AssetImage('assets/Bayo.jpg'),
-                //   radius: 20.0,
-                // ),
-                const SizedBox(width: 10),
-                Text(
-                  'Add Post',
-                  textAlign: TextAlign.center,
-                  style: kHeaderTaglineTextStyle.copyWith(
-                    color: AppColors.kBlackColor,
-                    // fontFamily: 'Comfortaa',
-                  ),
-                ),
-                // Expanded(child: Container()),
-              ],
-            ),
-            const SizedBox(height: 20),
             Row(
               children: const [
                 CircleAvatar(

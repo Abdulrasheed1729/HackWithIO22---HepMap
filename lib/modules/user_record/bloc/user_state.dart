@@ -11,7 +11,6 @@ class UserLoading extends UserState {}
 
 class UserLoaded extends UserState {
   final User user;
-
   const UserLoaded({required this.user});
 
   @override

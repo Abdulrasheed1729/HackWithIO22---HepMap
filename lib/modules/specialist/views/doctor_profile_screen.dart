@@ -8,6 +8,35 @@ class DoctorProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.kBlueColor,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 25.0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            child: SvgPicture.asset(
+              'assets/icons/Arrow-left.svg',
+              height: 40,
+              width: 40,
+              color: AppColors.kwhiteColor,
+            ),
+          ),
+        ),
+        iconTheme: const IconThemeData(size: 25.0),
+        title: const Text(
+          'Doctor Profile',
+        ),
+        titleTextStyle: kHeaderTaglineTextStyle.copyWith(
+          color: AppColors.kwhiteColor,
+          fontSize: 16.0,
+          fontFamily: 'Comfortaa',
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 25.0,
@@ -16,33 +45,6 @@ class DoctorProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  alignment: Alignment.centerLeft,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: SvgPicture.asset(
-                    'assets/icons/Arrow-left.svg',
-                    height: 45,
-                    width: 45,
-                  ),
-                  color: AppColors.kBlackColor,
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  'Doctor Profile',
-                  textAlign: TextAlign.center,
-                  style: kHeaderTaglineTextStyle.copyWith(
-                    color: AppColors.kBlackColor,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 25.0),
             Center(
               child: Stack(
                 clipBehavior: Clip.none,

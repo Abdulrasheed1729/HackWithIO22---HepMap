@@ -3,7 +3,7 @@ abstract class StorageService {
 
   Future<void> set(String? key, dynamic data);
 
-  dynamic get(String key);
+  // dynamic get(dynamic key);
 
   Future<void> clear();
 
