@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_with_io/app/app.dart';
 
 class MedicalRecordScreeen extends StatefulWidget {
@@ -31,6 +30,7 @@ class _MedicalRecordScreeenState extends State<MedicalRecordScreeen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BuildAppBar(context, 'Medical Record'),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -40,35 +40,6 @@ class _MedicalRecordScreeenState extends State<MedicalRecordScreeen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                    padding: const EdgeInsets.all(0.0),
-                    alignment: Alignment.centerLeft,
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: SvgPicture.asset(
-                      'assets/icons/Arrow-left.svg',
-                      height: 45,
-                      width: 45,
-                    ),
-                    color: AppColors.kBlackColor,
-                  ),
-                  const SizedBox(width: 10),
-                  Text(
-                    'Medical Record',
-                    textAlign: TextAlign.center,
-                    style: kHeaderTaglineTextStyle.copyWith(
-                      color: AppColors.kBlackColor,
-                      // fontFamily: 'Comfortaa',
-                    ),
-                  ),
-                  // Expanded(child: Container()),
-                ],
-              ),
-              const SizedBox(height: 30.0),
               Text(
                 'Full Name',
                 style: kTextBoxLabelTextStyle.copyWith(
