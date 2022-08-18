@@ -8,34 +8,14 @@ class AddPostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: AppColors.kwhiteColor,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 25.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            },
-            child: SvgPicture.asset(
-              'assets/icons/Arrow-left.svg',
-              height: 40,
-              width: 40,
-              color: AppColors.kBlackColor,
-            ),
-          ),
-        ),
-        iconTheme: const IconThemeData(size: 25.0),
-        title: const Text(
-          'Add Post',
-        ),
-        titleTextStyle: kHeaderTaglineTextStyle.copyWith(
-          color: AppColors.kBlackColor,
-          fontSize: 16.0,
-          fontFamily: 'Comfortaa',
-        ),
-        centerTitle: true,
+      appBar: buildAppBar(
+        'Add Post',
+        context: context,
+        backgroundColour: AppColors.kwhiteColor,
+        foregroundColour: AppColors.kBlackColor,
+        onTap: () {
+          Navigator.of(context).pop();
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
