@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_with_io/app/app.dart';
 import 'package:hack_with_io/modules/specialist/specialist.dart';
-
-import '../widgets/widgets.dart';
-import 'choose_doctors_screen.dart';
 
 class SeeSpacialistScreen extends StatefulWidget {
   const SeeSpacialistScreen({Key? key}) : super(key: key);
@@ -59,6 +55,15 @@ class _SeeSpacialistScreenState extends State<SeeSpacialistScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(
+        'See a Specialist',
+        context: context,
+        backgroundColour: AppColors.kwhiteColor,
+        foregroundColour: AppColors.kBlackColor,
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 25.0,
@@ -67,33 +72,6 @@ class _SeeSpacialistScreenState extends State<SeeSpacialistScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  alignment: Alignment.centerLeft,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: SvgPicture.asset(
-                    'assets/icons/Arrow-left.svg',
-                    height: 45,
-                    width: 45,
-                  ),
-                  color: AppColors.kBlackColor,
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  'See a Specialist',
-                  textAlign: TextAlign.center,
-                  style: kHeaderTaglineTextStyle.copyWith(
-                    color: AppColors.kBlackColor,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

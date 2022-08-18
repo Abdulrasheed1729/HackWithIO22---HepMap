@@ -30,7 +30,15 @@ class _MedicalRecordScreeenState extends State<MedicalRecordScreeen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BuildAppBar(context, 'Medical Record'),
+      appBar: buildAppBar(
+        'Medical Record',
+        context: context,
+        backgroundColour: AppColors.kwhiteColor,
+        foregroundColour: AppColors.kBlackColor,
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(

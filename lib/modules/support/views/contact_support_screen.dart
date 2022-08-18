@@ -7,7 +7,15 @@ class ContactSuppostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BuildAppBar(context, 'Contact Support'),
+      appBar: buildAppBar(
+        'Contact Support',
+        context: context,
+        backgroundColour: AppColors.kwhiteColor,
+        foregroundColour: AppColors.kBlackColor,
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 25.0,

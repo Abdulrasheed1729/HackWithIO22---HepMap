@@ -3,24 +3,25 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../configs/configs.dart';
 
-AppBar BuildAppBar(
-  BuildContext context,
-  String title,
-) {
+AppBar buildAppBar(
+  String title, {
+  required BuildContext context,
+  required Color backgroundColour,
+  required Color foregroundColour,
+  required VoidCallback onTap,
+}) {
   return AppBar(
     elevation: 0.0,
-    backgroundColor: AppColors.kwhiteColor,
+    backgroundColor: backgroundColour,
     leading: Padding(
       padding: const EdgeInsets.only(left: 25.0),
       child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).pop();
-        },
+        onTap: onTap,
         child: SvgPicture.asset(
           'assets/icons/Arrow-left.svg',
           height: 40,
           width: 40,
-          color: AppColors.kBlackColor,
+          color: foregroundColour,
         ),
       ),
     ),
@@ -29,7 +30,7 @@ AppBar BuildAppBar(
       title,
     ),
     titleTextStyle: kHeaderTaglineTextStyle.copyWith(
-      color: AppColors.kBlackColor,
+      color: foregroundColour,
       fontSize: 16.0,
       fontFamily: 'Comfortaa',
     ),

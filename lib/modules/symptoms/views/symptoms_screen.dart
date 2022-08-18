@@ -14,7 +14,15 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BuildAppBar(context, 'My Symptoms'),
+      appBar: buildAppBar(
+        'My Symptoms',
+        context: context,
+        backgroundColour: AppColors.kwhiteColor,
+        foregroundColour: AppColors.kBlackColor,
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 25.0,
