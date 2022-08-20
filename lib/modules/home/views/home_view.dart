@@ -11,6 +11,8 @@ import 'home_page.dart';
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
+  static Page<void> page() => const MaterialPage<void>(child: HomeView());
+
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -31,6 +33,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       floatingActionButton: FloatingActionButton.small(
         backgroundColor: AppColors.kBlueColor,
+        elevation: 2.0,
         onPressed: () {
           showModalBottomSheet(
             context: context,
@@ -140,14 +143,20 @@ class _HomeViewState extends State<HomeView> {
             },
           );
         },
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add_circle_outline,
+          size: 35.0,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: pages[_currentPage],
+      body: SafeArea(
+        child: pages[_currentPage],
+      ),
       bottomNavigationBar: SizedBox(
         height: 60,
         child: BottomAppBar(
-          notchMargin: 6.0,
+          notchMargin: 0.0,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
           shape: const CircularNotchedRectangle(),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -93,19 +93,20 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   RichText(
                     text: TextSpan(
-                        text: 'By clicking "REGISTER", you agree to HepMap ',
-                        style: kInfoTextStyle.copyWith(
-                          color: AppColors.kBlackColor,
-                          fontFamily: 'Montserrat',
+                      text: 'By clicking "REGISTER", you agree to HepMap ',
+                      style: kInfoTextStyle.copyWith(
+                        color: AppColors.kBlackColor,
+                        fontFamily: 'Montserrat',
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'Privacy Policy',
+                          style: kTextBoxLabelTextStyle.copyWith(
+                              color: AppColors.kBlueColor),
                         ),
-                        children: [
-                          TextSpan(
-                            text: 'Privacy Policy',
-                            style: kTextBoxLabelTextStyle.copyWith(
-                                color: AppColors.kBlueColor),
-                          ),
-                          const TextSpan(text: '.')
-                        ]),
+                        const TextSpan(text: '.')
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 40,

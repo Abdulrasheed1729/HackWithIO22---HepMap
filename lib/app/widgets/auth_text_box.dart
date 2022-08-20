@@ -11,12 +11,11 @@ class AuthTextBox extends StatelessWidget {
     this.isObscureText = false,
     this.keyboardType = TextInputType.text,
     this.onChanged,
-    required TextEditingController controller,
+    this.controller,
     this.errorText,
-  })  : _controller = controller,
-        super(key: key);
+  }) : super(key: key);
 
-  final TextEditingController _controller;
+  final TextEditingController? controller;
   final String label;
   final String suffixIconUrl;
   final bool isObscureText;
@@ -29,7 +28,7 @@ class AuthTextBox extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
       child: TextField(
-        controller: _controller,
+        controller: controller,
         obscureText: isObscureText,
         keyboardType: TextInputType.emailAddress,
         onChanged: onChanged,
