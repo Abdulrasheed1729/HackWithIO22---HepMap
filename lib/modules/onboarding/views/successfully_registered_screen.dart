@@ -45,7 +45,7 @@ class _SuccessfullyRegisteredScreenState
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => SignInScreen(),
+                        builder: (context) => const SignInScreen(),
                       ),
                     );
                   },

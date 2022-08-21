@@ -98,7 +98,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => SignInScreen(),
+                          builder: (context) => const SignInScreen(),
                         ),
                       );
                     },
