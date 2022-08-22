@@ -91,6 +91,9 @@ class _HomeViewState extends State<HomeView> {
     return FloatingActionButton.small(
       backgroundColor: AppColors.kBlueColor,
       elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(200.0),
+      ),
       onPressed: () {
         showAppBottomActionSheet(context);
       },
