@@ -24,7 +24,7 @@ class App extends StatelessWidget {
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'HepMap',
-          home: HomeView(),
+          home: AppView(),
         ),
       ),
     );
