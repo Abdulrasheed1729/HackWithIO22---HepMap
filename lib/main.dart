@@ -10,7 +10,7 @@ import 'app/view/app.dart';
 import 'bloc_observer.dart';
 
 GetIt getIt = GetIt.I;
-void main() async {
+Future<void> main() async {
   getIt.registerSingleton<UserLocalStorageApi>(UserLocalStorageApi());
   final initializeLocalStorage = getIt.get<UserLocalStorageApi>();
   WidgetsFlutterBinding.ensureInitialized();

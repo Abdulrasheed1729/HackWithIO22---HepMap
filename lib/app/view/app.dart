@@ -21,11 +21,7 @@ class App extends StatelessWidget {
       value: _authRepository,
       child: BlocProvider(
         create: (_) => AppBloc(authRepository: _authRepository),
-        child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'HepMap',
-          home: AppView(),
-        ),
+        child: const AppView(),
       ),
     );
   }
@@ -50,9 +46,13 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlowBuilder(
-      state: context.select((AppBloc bloc) => bloc.state.appStatus),
-      onGeneratePages: onGenerateAppViewPages,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'HepMap',
+      home: FlowBuilder(
+        state: context.select((AppBloc bloc) => bloc.state.appStatus),
+        onGeneratePages: onGenerateAppViewPages,
+      ),
     );
   }
 }
