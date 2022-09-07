@@ -29,7 +29,7 @@ class App extends StatelessWidget {
 
 List<Page> onGenerateAppViewPages(
   AppStatus state,
-  List<Page<dynamic>> pages,
+  List<Page> pages,
 ) {
   switch (state) {
     case AppStatus.authenticated:
@@ -49,7 +49,7 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HepMap',
-      home: FlowBuilder(
+      home: FlowBuilder<AppStatus>(
         state: context.select((AppBloc bloc) => bloc.state.appStatus),
         onGeneratePages: onGenerateAppViewPages,
       ),
