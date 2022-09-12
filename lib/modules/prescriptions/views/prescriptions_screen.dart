@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hack_with_io/app/app.dart';
 
-class MyPrescriptionScreen extends StatefulWidget {
-  const MyPrescriptionScreen({Key? key}) : super(key: key);
+class DrugPrescriptionScreen extends StatefulWidget {
+  const DrugPrescriptionScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyPrescriptionScreen> createState() => _MyPrescriptionScreenState();
+  State<DrugPrescriptionScreen> createState() => _DrugPrescriptionScreenState();
 }
 
-class _MyPrescriptionScreenState extends State<MyPrescriptionScreen> {
+class _DrugPrescriptionScreenState extends State<DrugPrescriptionScreen> {
   DateTime _selectedDate = DateTime.now();
 
   /// This function prompt the selection of [Date] for any upcomming

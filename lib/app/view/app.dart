@@ -2,6 +2,7 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_with_io/app/bloc/enum.dart';
+import 'package:hack_with_io/app/configs/routes.dart';
 import 'package:hack_with_io/modules/modules.dart';
 
 import '../bloc/app_bloc.dart';
@@ -46,13 +47,11 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HepMap',
-      home: FlowBuilder<AppStatus>(
-        state: context.select((AppBloc bloc) => bloc.state.appStatus),
-        onGeneratePages: onGenerateAppViewPages,
-      ),
+      home: SplashScreen(),
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }

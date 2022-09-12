@@ -92,7 +92,7 @@ class ProfileSettingScreen extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return const MyPrescriptionScreen();
+                        return const DrugPrescriptionScreen();
                       },
                     ),
                   );
@@ -117,7 +117,7 @@ class ProfileSettingScreen extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return const ContactSuppostScreen();
+                        return const ContactSupportScreen();
                       },
                     ),
                   );

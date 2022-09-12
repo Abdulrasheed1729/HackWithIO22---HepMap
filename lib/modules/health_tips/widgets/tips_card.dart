@@ -24,7 +24,7 @@ class TipsCard extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return const MyTipsScreen();
+                return const HealthTipsScreen();
               },
             ),
           );

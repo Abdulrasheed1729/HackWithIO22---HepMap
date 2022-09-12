@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hack_with_io/app/app.dart';
 
-class MyTipsScreen extends StatelessWidget {
-  const MyTipsScreen({Key? key}) : super(key: key);
+class HealthTipsScreen extends StatelessWidget {
+  const HealthTipsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

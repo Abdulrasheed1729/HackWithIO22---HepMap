@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hack_with_io/app/app.dart';
-import 'package:hack_with_io/modules/auth/auth.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -34,13 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 2),
-      () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => App(
-            authRepository: AuthRepository(),
-          ),
-        ),
-      ),
+      () => Navigator.of(context).pushNamed('/'),
     );
   }
 
