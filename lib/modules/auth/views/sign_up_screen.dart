@@ -187,7 +187,7 @@ class SignUpForm extends StatelessWidget {
                             label: 'REGISTER',
                             onPressed: () {
                               if (state.status.isValidated) {
-                                () => context
+                                context
                                     .read<SignUpCubit>()
                                     .signUpFormSubmitted();
                                 Navigator.of(context).push(
