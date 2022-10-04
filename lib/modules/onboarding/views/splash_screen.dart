@@ -1,5 +1,11 @@
+import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_with_io/app/app.dart';
+import 'package:hack_with_io/modules/modules.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../app/bloc/enum.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,30 +18,56 @@ class _SplashScreenState extends State<SplashScreen> {
   /// Don't bother about this just continue with your work
   ///
   /// :)
-  // Future<void> transitToOnboardingPage() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   final showOnbarding = prefs.getBool('showOnboarding') ?? false;
-  //   Future.delayed(
-  //     const Duration(seconds: 5),
-  //     () => Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) {
-  //           return showOnbarding ? const HomeView() : const OnboardingScreen();
-  //         },
-  //       ),
-  //     ),
-  //   );
-  // }
+  ///
+  ///
+  List<Page> onGenerateAppViewPages(
+    AppStatus state,
+    List<Page> pages,
+  ) {
+    switch (state) {
+      case AppStatus.authenticated:
+        return [HomeView.page()];
+      case AppStatus.unauthenticated:
+        return [SignInScreen.page()];
+    }
+  }
+
+  Future<void> transitToOnboardingPage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final showOnbarding = prefs.getBool('showOnboarding') ?? false;
+    Future.delayed(
+      const Duration(seconds: 5),
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return showOnbarding
+                ? FlowBuilder<AppStatus>(
+                    state:
+                        context.select((AppBloc bloc) => bloc.state.appStatus),
+                    onGeneratePages: onGenerateAppViewPages,
+                  )
+                : const OnboardingScreen();
+          },
+        ),
+      ),
+    );
+  }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => Navigator.of(context).pushNamed('/'),
-    );
+    transitToOnboardingPage();
   }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Future.delayed(
+  //     const Duration(seconds: 3),
+  //     () => Navigator.of(context).pushNamed('/'),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {

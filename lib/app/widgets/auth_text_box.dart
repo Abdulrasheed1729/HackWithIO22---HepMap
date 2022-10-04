@@ -40,7 +40,7 @@ class AuthTextBox extends StatelessWidget {
             suffixIconUrl,
             fit: BoxFit.scaleDown,
           ),
-          constraints: const BoxConstraints(maxHeight: 40),
+          constraints: const BoxConstraints(minHeight: 40),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),

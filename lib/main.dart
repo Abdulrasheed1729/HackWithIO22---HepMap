@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:hack_with_io/modules/modules.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -19,7 +20,7 @@ Future<void> main() async {
   await initializeLocalStorage.openBox();
 
   Bloc.observer = AppBlocObserver();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
   final authRepository = AuthRepository();
   await authRepository.user.first;
   runApp(
