@@ -5,14 +5,14 @@ import 'package:hack_with_io/app/app.dart';
 import 'package:hack_with_io/modules/auth/auth.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+  const SignUpScreen({Key? key}) : super(key: key);
 
-  final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
 
-  final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
 
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  // final TextEditingController _confirmPasswordController =
+  //     TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,57 +20,63 @@ class SignUpScreen extends StatelessWidget {
       body: SafeArea(
         child: BlocProvider(
           create: (_) => SignUpCubit(context.read<AuthRepository>()),
-          child: SignUpForm(
-            passwordController: _passwordController,
-            confirmPasswordController: _confirmPasswordController,
-          ),
+          child: const SignUpForm(
+              // passwordController: _passwordController,
+              // confirmPasswordController: _confirmPasswordController,
+              ),
         ),
       ),
     );
   }
 
-  String? passwordValidator(value) {
-    if (value != _passwordController.text) {
-      return 'Password does not match';
-    }
-    return null;
-  }
+  // String? passwordValidator(value) {
+  //   if (value != _passwordController.text) {
+  //     return 'Password does not match';
+  //   }
+  //   return null;
+  // }
 
-  String? emailValidator(value) {
-    if (value!.length < 4) {
-      return 'Too Short';
-    } else if (value.isEmpty) {
-      return 'Email cannot be empty';
-    } else if (!value.contains('@')) {
-      return 'Invalid mail';
-    }
-    return null;
-  }
+  // String? emailValidator(value) {
+  //   if (value!.length < 4) {
+  //     return 'Too Short';
+  //   } else if (value.isEmpty) {
+  //     return 'Email cannot be empty';
+  //   } else if (!value.contains('@')) {
+  //     return 'Invalid mail';
+  //   }
+  //   return null;
+  // }
 }
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
     Key? key,
-    required TextEditingController passwordController,
-    required TextEditingController confirmPasswordController,
-  })  : _passwordController = passwordController,
-        _confirmPasswordController = confirmPasswordController,
+    // required TextEditingController passwordController,
+    // required TextEditingController confirmPasswordController,
+  }) :
+        // _passwordController = passwordController,
+        //       _confirmPasswordController = confirmPasswordController,
         super(key: key);
 
-  final TextEditingController _passwordController;
-  final TextEditingController _confirmPasswordController;
+  // final TextEditingController _passwordController;
+  // final TextEditingController _confirmPasswordController;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignUpCubit, SignUpState>(
       listener: (context, state) {
-        if (state.status.isSubmissionFailure) {
+        if (state.status.isSubmissionSuccess) {
+          // Navigator.of(context).push(
+          //   MaterialPageRoute(
+          //     builder: (context) => const SignInScreen(),
+          //   ),
+          // );
+          Navigator.of(context).pop();
+        } else if (state.status.isSubmissionFailure) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage ?? 'Authentication Failure'),
-              ),
+              SnackBar(content: Text(state.errorMessage ?? 'Sign Up Failure')),
             );
         }
       },
@@ -184,21 +190,14 @@ class SignUpForm extends StatelessWidget {
                     return state.status.isSubmissionInProgress
                         ? const CircularProgressIndicator()
                         : AppWideButton(
+                            key: const Key('signUpForm_continue_raisedButton'),
                             label: 'REGISTER',
-                            onPressed: () {
-                              if (state.status.isValidated) {
-                                context
+                            onPressed: state.status.isValidated
+                                ? () => context
                                     .read<SignUpCubit>()
-                                    .signUpFormSubmitted();
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => const SignInScreen(),
-                                  ),
-                                );
-                              } else {
-                                null;
-                              }
-                            });
+                                    .signUpFormSubmitted()
+                                : null,
+                          );
                   },
                 ),
                 const SizedBox(height: 10),
