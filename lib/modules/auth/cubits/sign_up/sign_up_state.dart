@@ -1,38 +1,40 @@
 part of 'sign_up_cubit.dart';
 
-enum ConfirmPasswordValidationError { invalid }
+enum SignupStatus { initial, submitting, success, error }
 
 class SignUpState extends Equatable {
   const SignUpState({
-    this.email = const Email.pure(),
-    this.password = const Password.pure(),
-    this.confirmPassword = const ConfirmPassword.pure(),
-    this.status = FormzStatus.pure,
-    this.errorMessage,
+    required this.email,
+    required this.password,
+    required this.status,
   });
 
-  final Email email;
-  final Password password;
-  final ConfirmPassword confirmPassword;
-  final FormzStatus status;
-  final String? errorMessage;
+  final String email;
+  final String password;
+  final SignupStatus status;
 
-  @override
-  List<Object> get props => [email, password, confirmPassword, status];
+  factory SignUpState.initial() {
+    return const SignUpState(
+      email: '',
+      password: '',
+      status: SignupStatus.initial,
+    );
+  }
 
   SignUpState copyWith({
-    Email? email,
-    Password? password,
-    ConfirmPassword? confirmPassword,
-    FormzStatus? status,
-    String? errorMessage,
+    String? email,
+    String? password,
+    SignupStatus? status,
   }) {
     return SignUpState(
       email: email ?? this.email,
       password: password ?? this.password,
-      confirmPassword: confirmPassword ?? this.confirmPassword,
       status: status ?? this.status,
-      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
+
+  bool get isValid => email.isNotEmpty && password.isNotEmpty;
+
+  @override
+  List<Object> get props => [email, password, status];
 }

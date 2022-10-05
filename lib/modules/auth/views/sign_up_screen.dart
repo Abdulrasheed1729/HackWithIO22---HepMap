@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 import 'package:hack_with_io/app/app.dart';
+import 'package:hack_with_io/app/helpers/input_validator.dart';
 import 'package:hack_with_io/modules/auth/auth.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -48,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
   // }
 }
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatelessWidget with InputValidatorMixin {
   const SignUpForm({
     Key? key,
     // required TextEditingController passwordController,
@@ -65,18 +65,18 @@ class SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<SignUpCubit, SignUpState>(
       listener: (context, state) {
-        if (state.status.isSubmissionSuccess) {
+        if (state.status == LoginStatus.success) {
           // Navigator.of(context).push(
           //   MaterialPageRoute(
           //     builder: (context) => const SignInScreen(),
           //   ),
           // );
           Navigator.of(context).pop();
-        } else if (state.status.isSubmissionFailure) {
+        } else if (state.status == LoginStatus.error) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(content: Text(state.errorMessage ?? 'Sign Up Failure')),
+              const SnackBar(content: Text('Sign Up Failure')),
             );
         }
       },
@@ -120,7 +120,8 @@ class SignUpForm extends StatelessWidget {
                       suffixIconUrl: 'assets/icons/email.svg',
                       onChanged: (email) =>
                           context.read<SignUpCubit>().emailChanged(email),
-                      errorText: state.email.invalid ? 'invalid email' : null,
+                      errorText:
+                          !isEmailValid(state.email) ? 'invalid email' : null,
                     );
                   },
                 ),
@@ -145,8 +146,9 @@ class SignUpForm extends StatelessWidget {
                       isObscureText: true,
                       onChanged: (password) =>
                           context.read<SignUpCubit>().passwordChanged(password),
-                      errorText:
-                          state.password.invalid ? 'invalid password' : null,
+                      errorText: !isPasswordValid(state.password)
+                          ? 'invalid password'
+                          : null,
                     );
                   },
                 ),
@@ -160,42 +162,42 @@ class SignUpForm extends StatelessWidget {
                     ),
                   ),
                 ),
+                // BlocBuilder<SignUpCubit, SignUpState>(
+                //   buildWhen: (previous, current) =>
+                //       previous.password != current.password ||
+                //       previous.confirmPassword != current.confirmPassword,
+                //   builder: (context, state) {
+                //     return AuthTextBox(
+                //       key: const Key(
+                //           'signUpForm_confirmedPasswordInput_textField'),
+                //       label: 'Confirm Password',
+                //       suffixIconUrl: 'assets/icons/password.svg',
+                //       isObscureText: true,
+                //       onChanged: (confirmPassword) => context
+                //           .read<SignUpCubit>()
+                //           .confirmedPasswordChanged(confirmPassword),
+                //       errorText: state.confirmPassword.invalid
+                //           ? 'password does not match'
+                //           : null,
+                //     );
+                //   },
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
                 BlocBuilder<SignUpCubit, SignUpState>(
-                  buildWhen: (previous, current) =>
-                      previous.password != current.password ||
-                      previous.confirmPassword != current.confirmPassword,
+                  // buildWhen: (previous, current) =>
+                  //     previous.status != current.status,
                   builder: (context, state) {
-                    return AuthTextBox(
-                      key: const Key(
-                          'signUpForm_confirmedPasswordInput_textField'),
-                      label: 'Confirm Password',
-                      suffixIconUrl: 'assets/icons/password.svg',
-                      isObscureText: true,
-                      onChanged: (confirmPassword) => context
-                          .read<SignUpCubit>()
-                          .confirmedPasswordChanged(confirmPassword),
-                      errorText: state.confirmPassword.invalid
-                          ? 'password does not match'
-                          : null,
-                    );
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                BlocBuilder<SignUpCubit, SignUpState>(
-                  buildWhen: (previous, current) =>
-                      previous.status != current.status,
-                  builder: (context, state) {
-                    return state.status.isSubmissionInProgress
+                    return (state.status == LoginStatus.submitting)
                         ? const CircularProgressIndicator()
                         : AppWideButton(
                             key: const Key('signUpForm_continue_raisedButton'),
                             label: 'REGISTER',
-                            onPressed: state.status.isValidated
+                            onPressed: state.isValid
                                 ? () => context
                                     .read<SignUpCubit>()
-                                    .signUpFormSubmitted()
+                                    .signupWithCredentials()
                                 : null,
                           );
                   },

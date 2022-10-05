@@ -21,11 +21,11 @@ Future<void> main() async {
 
   Bloc.observer = AppBlocObserver();
   await Firebase.initializeApp();
-  final authRepository = AuthRepository();
-  await authRepository.user.first;
+  // final authRepository = AuthRepository();
+  // await authRepository.user.first;
   runApp(
-    App(
-      authRepository: authRepository,
-    ),
+    const App(
+        // authRepository: authRepository,
+        ),
   );
 }

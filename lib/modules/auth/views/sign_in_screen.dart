@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 import 'package:hack_with_io/app/app.dart';
+import 'package:hack_with_io/app/helpers/input_validator.dart';
 import 'package:hack_with_io/modules/auth/auth.dart';
+import 'package:hack_with_io/modules/home/home.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class SignInScreen extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatelessWidget with InputValidatorMixin {
   const LoginForm({
     Key? key,
   }) : super(key: key);
@@ -33,12 +34,16 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state.status.isSubmissionFailure) {
+        if (state.status == LoginStatus.success) {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const HomePage()),
+          );
+        } else {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage ?? 'Authentication Failure'),
+              const SnackBar(
+                content: Text('Authentication Failure'),
               ),
             );
         }
@@ -92,7 +97,8 @@ class LoginForm extends StatelessWidget {
                       onChanged: (email) =>
                           context.read<LoginCubit>().emailChanged(email),
                       suffixIconUrl: 'assets/icons/email.svg',
-                      errorText: state.email.invalid ? 'invalid email' : null,
+                      errorText:
+                          !isEmailValid(state.email) ? 'invalid email' : null,
                     );
                   },
                 ),
@@ -117,8 +123,9 @@ class LoginForm extends StatelessWidget {
                       isObscureText: true,
                       onChanged: (password) =>
                           context.read<LoginCubit>().passwordChanged(password),
-                      errorText:
-                          state.password.invalid ? 'invalid password' : null,
+                      errorText: !isPasswordValid(state.password)
+                          ? 'invalid password'
+                          : null,
                     );
                   },
                 ),
@@ -129,16 +136,16 @@ class LoginForm extends StatelessWidget {
                   buildWhen: (previous, current) =>
                       previous.status != current.status,
                   builder: (context, state) {
-                    return state.status.isSubmissionInProgress
+                    return state.status == LoginStatus.submitting
                         ? const CircularProgressIndicator()
                         : AppWideButton(
                             key: const Key(
                               'loginForm_continue_raisedButton',
                             ),
-                            onPressed: state.status.isValidated
+                            onPressed: state.isFormValid
                                 ? () => context
                                     .read<LoginCubit>()
-                                    .logInWithCredentials()
+                                    .loginWithCredentials()
                                 : null,
                             label: 'LOGIN',
                           );
@@ -173,7 +180,7 @@ class LoginForm extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => SignUpScreen(),
+                            builder: (context) => const SignUpScreen(),
                           ),
                         );
                       },
