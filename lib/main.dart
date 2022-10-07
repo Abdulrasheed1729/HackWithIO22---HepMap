@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,11 +22,9 @@ Future<void> main() async {
 
   Bloc.observer = AppBlocObserver();
   await Firebase.initializeApp();
-  // final authRepository = AuthRepository();
-  // await authRepository.user.first;
   runApp(
-    const App(
-        // authRepository: authRepository,
-        ),
+    const ProviderScope(
+      child: App(),
+    ),
   );
 }

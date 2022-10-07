@@ -1,26 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hack_with_io/modules/auth/auth.dart';
 import 'package:hack_with_io/modules/auth/repository/base_auth_repository.dart';
 
 class AuthRepository implements BaseAuthRepository {
-  final firebase_auth.FirebaseAuth _firebaseAuth;
-  AuthRepository({firebase_auth.FirebaseAuth? firebaseAuth})
-      : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
-  @override
-  Future<firebase_auth.User?> signUp(
-      {required String email, required String password}) async {
-    try {
-      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      final user = credential.user;
-      return user;
-    } catch (_) {}
-    return null;
-  }
+  const AuthRepository(this._firebaseAuth);
 
-  @override
-  Stream<firebase_auth.User?> get user => _firebaseAuth.userChanges();
+  final FirebaseAuth _firebaseAuth;
+
+  User? get currentUser => _firebaseAuth.currentUser;
 
   @override
   Future<void> loginWithEmailAndPassword({
@@ -32,11 +20,44 @@ class AuthRepository implements BaseAuthRepository {
         email: email,
         password: password,
       );
-    } catch (_) {}
+    } on FirebaseAuthException catch (e) {
+      throw LogInWithEmailAndPasswordFailure.fromCode(e.code);
+    } catch (_) {
+      throw const LogInWithEmailAndPasswordFailure();
+    }
   }
 
   @override
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
   }
+
+  @override
+  Future<User?> signUp({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return authResult.user;
+    } on FirebaseAuthException catch (e) {
+      throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
+    } catch (_) {
+      throw const SignUpWithEmailAndPasswordFailure();
+    }
+  }
+
+  @override
+  Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
 }
+
+final authRepositoryProvider = Provider<AuthRepository>((ref) {
+  return AuthRepository(FirebaseAuth.instance);
+});
+
+final authStateChangeProvider = StreamProvider<User?>((ref) {
+  return ref.read(authRepositoryProvider).authStateChange;
+});
