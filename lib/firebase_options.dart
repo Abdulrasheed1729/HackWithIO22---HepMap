@@ -44,40 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCCSXecd-x_PuBmwkfqyzNP_JSlZulxrhg',
-    appId: '1:464651141529:web:c07b210b8dc7fec6cd9308',
-    messagingSenderId: '464651141529',
-    projectId: 'hepmap-fc5e3',
-    authDomain: 'hepmap-fc5e3.firebaseapp.com',
-    storageBucket: 'hepmap-fc5e3.appspot.com',
-    measurementId: 'G-CPNBDE8BEM',
+    apiKey: 'AIzaSyBeRuFqCKGLoL-k_GEtljuF7KuvRdL3urY',
+    appId: '1:593803979728:web:07d6060b5017ef684d27d5',
+    messagingSenderId: '593803979728',
+    projectId: 'project-hepmap',
+    authDomain: 'project-hepmap.firebaseapp.com',
+    storageBucket: 'project-hepmap.appspot.com',
+    measurementId: 'G-8Y8WRY6JCP',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyArU5Ai6VHQkKK2fkjkzYbwWv-yqheVBco',
-    appId: '1:464651141529:android:919982d96c809cd0cd9308',
-    messagingSenderId: '464651141529',
-    projectId: 'hepmap-fc5e3',
-    storageBucket: 'hepmap-fc5e3.appspot.com',
+    apiKey: 'AIzaSyBgKojL7D7NsLjJ4bskBqURK0xibAB0c5s',
+    appId: '1:593803979728:android:fddbacebc3bf93034d27d5',
+    messagingSenderId: '593803979728',
+    projectId: 'project-hepmap',
+    storageBucket: 'project-hepmap.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDlt4wfX-Zjq9_eTrc6Bdl2AiGQ_aMEf3E',
-    appId: '1:464651141529:ios:c0b8213c3babbbf3cd9308',
-    messagingSenderId: '464651141529',
-    projectId: 'hepmap-fc5e3',
-    storageBucket: 'hepmap-fc5e3.appspot.com',
-    iosClientId: '464651141529-dgfivnsq8go4g1b9586igt7hpfvs5lh6.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAZlxW5GDg1ChF-m9y0SxgixOmn937frVo',
+    appId: '1:593803979728:ios:30c125f48858e4484d27d5',
+    messagingSenderId: '593803979728',
+    projectId: 'project-hepmap',
+    storageBucket: 'project-hepmap.appspot.com',
+    iosClientId: '593803979728-bmee88kl0r7qs8nsrd9jil0c9jvv351b.apps.googleusercontent.com',
     iosBundleId: 'com.example.hackWithIo',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDlt4wfX-Zjq9_eTrc6Bdl2AiGQ_aMEf3E',
-    appId: '1:464651141529:ios:c0b8213c3babbbf3cd9308',
-    messagingSenderId: '464651141529',
-    projectId: 'hepmap-fc5e3',
-    storageBucket: 'hepmap-fc5e3.appspot.com',
-    iosClientId: '464651141529-dgfivnsq8go4g1b9586igt7hpfvs5lh6.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAZlxW5GDg1ChF-m9y0SxgixOmn937frVo',
+    appId: '1:593803979728:ios:30c125f48858e4484d27d5',
+    messagingSenderId: '593803979728',
+    projectId: 'project-hepmap',
+    storageBucket: 'project-hepmap.appspot.com',
+    iosClientId: '593803979728-bmee88kl0r7qs8nsrd9jil0c9jvv351b.apps.googleusercontent.com',
     iosBundleId: 'com.example.hackWithIo',
   );
 }

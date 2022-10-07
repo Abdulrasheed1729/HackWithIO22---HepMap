@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:464651141529:ios:c0b8213c3babbbf3cd9308",
-  "FIREBASE_PROJECT_ID": "hepmap-fc5e3",
-  "GCM_SENDER_ID": "464651141529"
+  "GOOGLE_APP_ID": "1:593803979728:ios:30c125f48858e4484d27d5",
+  "FIREBASE_PROJECT_ID": "project-hepmap",
+  "GCM_SENDER_ID": "593803979728"
 }

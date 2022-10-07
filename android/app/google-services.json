@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "464651141529",
-    "project_id": "hepmap-fc5e3",
-    "storage_bucket": "hepmap-fc5e3.appspot.com"
+    "project_number": "593803979728",
+    "project_id": "project-hepmap",
+    "storage_bucket": "project-hepmap.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:464651141529:android:919982d96c809cd0cd9308",
+        "mobilesdk_app_id": "1:593803979728:android:fddbacebc3bf93034d27d5",
         "android_client_info": {
           "package_name": "com.example.hack_with_io"
         }
       },
       "oauth_client": [
         {
-          "client_id": "464651141529-12to80lbreemsqhqhglihjsbf9s75dbb.apps.googleusercontent.com",
+          "client_id": "593803979728-p3qcv8budu12eom5l7gd3dc7ce3008am.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyArU5Ai6VHQkKK2fkjkzYbwWv-yqheVBco"
+          "current_key": "AIzaSyBgKojL7D7NsLjJ4bskBqURK0xibAB0c5s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "464651141529-12to80lbreemsqhqhglihjsbf9s75dbb.apps.googleusercontent.com",
+              "client_id": "593803979728-p3qcv8budu12eom5l7gd3dc7ce3008am.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "464651141529-dgfivnsq8go4g1b9586igt7hpfvs5lh6.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.hackWithIo"
-              }
             }
           ]
         }
